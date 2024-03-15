@@ -9,9 +9,7 @@
     <meta name="description" content="谷山サニーサイド保育園　鹿児島市 | 谷山サニーサイド保育園　鹿児島市">
     <meta property="og:description" content="谷山サニーサイド保育園　鹿児島市 | 谷山サニーサイド保育園　鹿児島市">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="/images/サニーサイドのロゴ.png" />
-    <meta property="og:image" content="/images/サニーサイドのロゴ.png" />
-    <!-- <meta property="og:image" content="/images/サニーサイドのロゴ.png"> -->
+    <meta property="og:image" content="/images/logo.png" />
     <meta property="og:site_name" content="谷山サニーサイド保育園　鹿児島市 | 谷山サニーサイド保育園　鹿児島市">
     <meta name="format-detection" content="telephone=no">
     <link rel="apple-touch-icon" sizes="57x57" href="">
@@ -27,9 +25,9 @@
     <meta name="msapplication-TileColor" content="transparent">
     <meta name="msapplication-TileImage" content="">
     <meta name="msapplication-config" content="">
-    <link rel="icon" type="image/png" sizes="16x16" href="images/サニーサイドのロゴ.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="images/サニーサイドのロゴ.png">
-    <link rel="icon" href="images/サニーサイドのロゴ.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/logo.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/logo.png">
+    <link rel="icon" href="images/logo.png">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" type="text/css" media="screen" href="https://www.onoyou.jp/wp/wp-content/cache/autoptimize/autoptimize_single_8c6eee6b2107ef25dc486020ced13898.php">
     <link rel="stylesheet" type="text/css" media="screen" href="https://www.onoyou.jp/wp/wp-content/themes/onoyou/assets/css/yakuhanjp_s.min.css">
@@ -47,8 +45,8 @@
     <div class="guidance active" id="container">
 <header class="header guidance" style="padding-left: 0px !important;">
 
-<a href="/">
-    <img src="images/サニーサイドのロゴ.png" alt="" style="width: 100%; height: 100%;">
+<a href="/" class="toplogo">
+  <img src="images/logo.png" alt="" style="width: 100%; height: 100%;">
 </a>
 <!-- <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 sticky-top">
   <div class="container">
@@ -140,8 +138,8 @@
 </header>
       <section class="main-visual">
         <div class="block gym" data-structure="b-main-set-2" data-block-name="メイン(中央寄せ+ボタン)" id="section-75">
-          <video src="images/トップの動画.MOV" autoplay loop muted playsinline data-wf-ignore="true" data-object-fit="cover">
-            <source src="images/トップの動画.MOV" data-wf-ignore="true">
+          <video src="images/topvideo.MOV" autoplay loop muted playsinline data-wf-ignore="true" data-object-fit="cover">
+            <source src="images/topvideo.MOV" data-wf-ignore="true">
           </video>
         </div>
         <!-- <div class="eyecatch"></div> -->
@@ -175,7 +173,7 @@
           <div class="home-attraction">
             <div class="image fade-in">
               <div class="">
-                <img src="images/谷山サニーサイド外観.png" alt="" class="lazyload">
+                <img src="images/facility.png" alt="" class="lazyload">
               </div>
             </div>
             <div class="head fade-in">
@@ -222,7 +220,7 @@
           <div class="home-policy">
             <div class="image fade-in">
               <div class="">
-                <img src="images/谷山サニーサイド外観.png" alt="" class="lazyload">
+                <img src="images/facility.png" alt="" class="lazyload">
               </div>
             </div>
             <div class="head fade-in">
@@ -269,7 +267,7 @@
           <div class="home-attraction">
             <div class="image fade-in">
               <div class="">
-                <img src="images/谷山サニーサイド外観.png" alt="" class="lazyload">
+                <img src="images/facility.png" alt="" class="lazyload">
               </div>
             </div>
             <div class="head fade-in">
@@ -302,7 +300,7 @@
             <div class="home-policy">
               <div class="image fade-in">
                 <div class="">
-                  <img src="images/谷山サニーサイド外観.png" alt="" class="lazyload">
+                  <img src="images/facility.png" alt="" class="lazyload">
                 </div>
               </div>
               <div class="head fade-in">
@@ -480,7 +478,7 @@
 <footer class="footer guidance">
   <div class="inner">
     <div class="info">
-      <div class="logo"><a href="/"><noscript><img class="lazyload" src="images/サニーサイドのロゴ.png" alt="SANUA"/></noscript><img class="lazyloaded ls-is-cached" src="images/サニーサイドのロゴ.png" data-src="" alt="SANUA"></a></div>
+      <div class="logo"><a href="/"><noscript><img class="lazyload" src="images/logo.png" alt="LOGO"/></noscript><img class="lazyloaded ls-is-cached" src="images/logo.png" data-src="" alt="LOGO"></a></div>
       <div class="access">
         <p class="text-primary">〒000-0000<br class="for-large">鹿児島市谷山</p>
       </div>
@@ -873,6 +871,14 @@ $(window).on('load',function(){
     .home-policy .content {
       width: 100%;
     }
+
+    .toplogo {
+      max-width: 20%;
+    }
+
+    video {
+      max-height: 1200px;
+    }
   }
 
   @media screen and (max-width: 1366px) and (max-width: 736px) {
@@ -957,5 +963,16 @@ $(window).on('load',function(){
     .home-attraction>.image {
       padding-right: 450px;
     }
+  }
+
+  @media only screen and (min-width: 1080px) {
+    /* .hamburger {
+      display: none;
+    } */
+
+    /* .toplogo {
+      width: 100%;
+      height: 100%;
+    } */
   }
 </style>
