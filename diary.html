@@ -281,17 +281,19 @@
             <div class="wrap">
               <sample-post-list data-item-page-path='item.html' data-perpage='100'>
                 <ul class="list" style="margin: 20px;">
-                    <li class="item">
+                    <li class="item news_list">
                       <a href="{%= sample-post_#url %}">
-                        <div class="eyecatch">
-                          <img width="150" height="113" src="{%= sample-post_image %}" class="attachment-post_thumbnail size-post_thumbnail wp-post-image" alt="" srcset="{%= sample-post_image %} 1440w, {%= sample-post_image %} 240w, {%= sample-post_image %} 819w, {%= sample-post_image %} 768w, {%= sample-post_image %} 1229w" sizes="(max-width: 1440px) 100vw, 1440px">
-                        </div>
-                        <div class="text">
-                          <time>{%= sample-post_date %}</time>
-                          <h3 class="title">{%= sample-post_title %}</h3>
-                          <br>
-                          <div class="button-more"><span style="font-size: 16px;">詳細を見る</span>
-                            <div class="arrow"></div>
+                        <div class="blog-section">
+                          <div class="eyecatch">
+                            <img width="150" height="113" src="{%= sample-post_image %}" class="attachment-post_thumbnail size-post_thumbnail wp-post-image" alt="" srcset="{%= sample-post_image %} 1440w, {%= sample-post_image %} 240w, {%= sample-post_image %} 819w, {%= sample-post_image %} 768w, {%= sample-post_image %} 1229w" sizes="(max-width: 1440px) 100vw, 1440px">
+                          </div>
+                          <div class="text">
+                            <time>{%= sample-post_date %}</time>
+                            <h3 class="title">{%= sample-post_title %}</h3>
+                            <br>
+                            <div class="button-more"><span style="font-size: 16px;">詳細を見る</span>
+                              <div class="arrow"></div>
+                            </div>
                           </div>
                         </div>
                       </a>
@@ -299,13 +301,6 @@
                 </ul>
               </sample-post-list>
             </div>
-            <!-- <div class="pager"><span aria-current="page" class="page-numbers current">1</span>
-              <a class="page-numbers" href="https://www.onoyou.jp/blog/page/2/">2</a>
-              <a class="page-numbers" href="https://www.onoyou.jp/blog/page/3/">3</a>
-              <span class="page-numbers dots">…</span>
-              <a class="page-numbers" href="https://www.onoyou.jp/blog/page/9/">9</a>
-              <a class="next page-numbers" href="https://www.onoyou.jp/blog/page/2/">next</a>
-            </div> -->
           </div>
         </div>
       </section>
@@ -602,7 +597,7 @@ li {
 	}
 
   #spearly-list-body {
-    display: flex;
+    display: block;
   }
 
   .blog-card-wrap {
@@ -864,6 +859,28 @@ li {
   @media only screen and (min-width: 1080px) {
     .hamburger {
       display: none;
+    }
+
+    .blog-section {
+      display: flex;
+    }
+
+    .eyecatch {
+      margin-right: 40px;
+    }
+
+    .eyecatch img {
+      width: 550;
+      height: 333;
+    }
+
+    .blog-section .text {
+      margin-top: 260px;
+      padding: 100px;
+    }
+
+    .blog-section .text .title {
+      width: 500px;
     }
   }
 </style>
