@@ -41,8 +41,8 @@
    
   
     <!-- Spearly CMS -->
-	<script src="https://static.spearly.com/js/cms.js" defer></script>
-	<script>window.addEventListener('DOMContentLoaded',()=>{const t=document.querySelectorAll(':not(:defined)');for(const e of t) {e.style.visibility="hidden";}; window.spearly.config.AUTH_KEY="_QPEzz-i1Y0JXWwFtssJldVrEA5OZ-tGzHuK6TjfSmI"},{once:true})</script>
+    <script src="https://static.spearly.com/js/cms.js" defer></script>
+    <script>window.addEventListener('DOMContentLoaded',()=>{const t=document.querySelectorAll(':not(:defined)');for(const e of t) {e.style.visibility="hidden";}; window.spearly.config.AUTH_KEY="5yWbtYiz02UhvlRH_0SorwtfO-g0jXCucMdzQC7XHqs"},{once:true})</script>
   <meta name="google-site-verification" content="lAI6r_BJfLuTr-ymnOMmWhQDpKdrTqgUfFrRlXLPkrs" />
 </head>
 <body data-rsssl="1" class="blog-detail">
@@ -201,17 +201,17 @@
               </div>
             </a>
           </div>
-          <sample-post-item>
+          <taniyama-sunnyside-blog-item>
             <div class="post-content">
               <div class="post">
-                <time>{%= sample-post_date %}</time>
-                <h1 class="title">{%= sample-post_title %}</h1>
+                <time>{%= taniyama-sunnyside-blog_date %}</time>
+                <h1 class="title">{%= taniyama-sunnyside-blog_title %}</h1>
                 <div class="content">
                   <div class="eyecatch">
-                    <img width="150" height="113" src="{%= sample-post_image %}" class="attachment-post_thumbnail size-post_thumbnail wp-post-image" alt="" srcset="{%= sample-post_image %} 1440w, {%= sample-post_image %} 240w, {%= sample-post_image %} 819w, {%= sample-post_image %} 768w, {%= sample-post_image %} 1229w" sizes="(max-width: 1440px) 100vw, 1440px">
+                    <img width="150" height="113" src="{%= taniyama-sunnyside-blog_image %}" class="attachment-post_thumbnail size-post_thumbnail wp-post-image" alt="" srcset="{%= taniyama-sunnyside-blog_image %} 1440w, {%= taniyama-sunnyside-blog_image %} 240w, {%= taniyama-sunnyside-blog_image %} 819w, {%= taniyama-sunnyside-blog_image %} 768w, {%= taniyama-sunnyside-blog_image %} 1229w" sizes="(max-width: 1440px) 100vw, 1440px">
                   </div>
                   <p>
-                    {%= sample-post_body %}
+                    {%= taniyama-sunnyside-blog_body %}
                   </p>
                 </div>
               </div>
@@ -228,7 +228,7 @@
                 </li> -->
               </ul>
             </div>
-          </sample-post-item>
+          </taniyama-sunnyside-blog-item>
         </div>
       </section>
     </main>
@@ -514,14 +514,21 @@ li {
     height: 113px;
   }
 
+  .spearly-richtext-content {
+    font-size: 14px;
+  }
+
   @media only screen and (max-width: 480px) {
     html {
       max-width: 100% !important;
     }
 
-    .post-content {
+    /* .post-content {
       max-width: 40% !important;
       overflow: hidden !important;
+    } */
+    .spearly-richtext-content {
+      font-size: 14px;
     }
 
     .sample-post-item-wrapper {
