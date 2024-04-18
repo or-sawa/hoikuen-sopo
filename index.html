@@ -147,7 +147,7 @@
                     </a>
                   </li>
                   <li class="item">
-                    <a href="place.html#map">
+                    <a href="place.html#image">
                       <span>施設イメージ</span>
                     </a>
                   </li>
@@ -191,11 +191,10 @@
             <source src="images/topvideo.MOV" data-wf-ignore="true">
           </video>
         </div>
-        <!-- <div class="eyecatch"></div> -->
         <div class="maincopy">
           <h1 class="title" style="font-size: 24px; color: #333;">サニーサイド保育園</h1>
-          <h2 class="copy" style="font-size: 20px;">
-            こころ・からだ・あたまをバランスよく育てる保育
+          <h2 class="copy" style="font-size: 18px;">
+            こころ・からだ・あたまをバランスよく<br>育てる保育
           </h2>
         </div>
       </section>
@@ -282,7 +281,7 @@
           <div class="home-attraction">
             <div class="image fade-in">
               <div class="">
-                <img src="images/frontView.JPG" alt="" class="lazyload">
+                <img src="images/frontView2.jpg" alt="" class="lazyload">
               </div>
             </div>
             <div class="head fade-in">
@@ -653,7 +652,7 @@ li {
 
   video {
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
     object-fit: fill;
     z-index: -100;
     background-position: 50%;
@@ -830,6 +829,19 @@ li {
   }
 
   @media only screen and (max-width: 736px) {
+
+    .main-visual {
+      height: 75% !important;
+    }
+
+    video {
+      bottom: -100%;
+    }
+
+    .maincopy {
+      bottom: 25px !important;
+    }
+
     .for-large {
       display: none;
     }
@@ -876,9 +888,9 @@ li {
       max-width: 20%;
     }
 
-    video {
+    /* video {
       max-height: 1200px;
-    }
+    } */
 
     .pconly {
       display: none !important;
