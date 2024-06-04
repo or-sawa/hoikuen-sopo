@@ -297,91 +297,88 @@
         </div>
       </div>
       <div class="under"><small class="copyright" style="color: #fff;">© sawa co</small>
-        <!-- <div class="link"><a class="map" href="https://goo.gl/maps/3MZrSFvGG9ENYZce6" target="_blank"><span>google map</span></a><a class="sns" href="https://www.instagram.com/onoyouchien/?hl=ja" target="_blank"><span>instagram</span></a></div> -->
       </div>
     </footer>
-</div><noscript><style>.lazyload{display:none;}</style></noscript><script data-noptimize="1">window.lazySizesConfig=window.lazySizesConfig||{};window.lazySizesConfig.loadMode=1;</script><script async="" data-noptimize="1" src="https://www.onoyou.jp/wp/wp-content/plugins/autoptimize/classes/external/js/lazysizes.min.js?ao_version=3.1.1.1"></script><script type="text/javascript" src="https://www.onoyou.jp/wp/wp-includes/js/wp-embed.min.js?ver=5.7.2" id="wp-embed-js"></script>
-  <script type="text/javascript" src="https://www.onoyou.jp/wp/wp-content/themes/onoyou/assets/js/jquery.min.js"></script>
-  <script type="text/javascript" src="https://www.onoyou.jp/wp/wp-content/themes/onoyou/assets/js/main.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js"></script>
-  <script type="text/javascript">
-    $(function(){
-        var
-        $container = $('#container');
-    
-    });
-  </script>
-  <script>
-    //ドロップダウンの設定を関数でまとめる
-    function mediaQueriesWin(){
-      var width = $(window).width();
-      if(width <= 768) {//横幅が768px以下の場合
-        $(".has-child>a").off('click'); //has-childクラスがついたaタグのonイベントを複数登録を避ける為offにして一旦初期状態へ
-        $(".has-child>a").on('click', function() {//has-childクラスがついたaタグをクリックしたら
-          var parentElem =  $(this).parent();// aタグから見た親要素の<li>を取得し
-          $(parentElem).toggleClass('active');//矢印方向を変えるためのクラス名を付与して
-          $(parentElem).children('ul').stop().slideToggle(500);//liの子要素のスライドを開閉させる※数字が大きくなるほどゆっくり開く
-          return false;//リンクの無効化
-        });
-      }else{//横幅が768px以上の場合
-        $(".has-child>a").off('click');//has-childクラスがついたaタグのonイベントをoff(無効)にし
-        $(".has-child").removeClass('active');//activeクラスを削除
-        $('.has-child').children('ul').css("display","");//スライドトグルで動作したdisplayも無効化にする
+</div>
+<script src="taniyama.js"></script>
+<script src="sunny.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js"></script>
+<script type="text/javascript">
+  $(function(){
+      var
+      $container = $('#container');
+  
+  });
+</script>
+<script>
+  //ドロップダウンの設定を関数でまとめる
+  function mediaQueriesWin(){
+    var width = $(window).width();
+    if(width <= 768) {//横幅が768px以下の場合
+      $(".has-child>a").off('click'); //has-childクラスがついたaタグのonイベントを複数登録を避ける為offにして一旦初期状態へ
+      $(".has-child>a").on('click', function() {//has-childクラスがついたaタグをクリックしたら
+        var parentElem =  $(this).parent();// aタグから見た親要素の<li>を取得し
+        $(parentElem).toggleClass('active');//矢印方向を変えるためのクラス名を付与して
+        $(parentElem).children('ul').stop().slideToggle(500);//liの子要素のスライドを開閉させる※数字が大きくなるほどゆっくり開く
+        return false;//リンクの無効化
+      });
+    }else{//横幅が768px以上の場合
+      $(".has-child>a").off('click');//has-childクラスがついたaタグのonイベントをoff(無効)にし
+      $(".has-child").removeClass('active');//activeクラスを削除
+      $('.has-child').children('ul').css("display","");//スライドトグルで動作したdisplayも無効化にする
+    }
+  }
+
+  // ページがリサイズされたら動かしたい場合の記述
+  $(window).resize(function() {
+    mediaQueriesWin();/* ドロップダウンの関数を呼ぶ*/
+  });
+
+  // ページが読み込まれたらすぐに動かしたい場合の記述
+  $(window).on('load',function(){
+    mediaQueriesWin();/* ドロップダウンの関数を呼ぶ*/
+  });
+</script>
+<script>
+  'use strict';
+
+  {
+    // DOM取得
+    // 親メニューのli要素
+    const parentMenuItem = document.querySelectorAll('.menu__item');
+    console.log(parentMenuItem);
+    // イベントを付加
+    for (let i = 0; i < parentMenuItem.length; i++) {
+      parentMenuItem[i].addEventListener('mouseover', dropDownMenuOpen);
+      parentMenuItem[i].addEventListener('mouseleave', dropDownMenuClose);
+    }
+    // ドロップダウンメニューを開く処理
+    function dropDownMenuOpen(e) {
+      // 子メニューa要素
+      const childMenuLink = e.currentTarget.querySelectorAll('.drop-menu__link');
+      console.log(childMenuLink);
+
+      // is-activeを付加
+      for (let i = 0; i < childMenuLink.length; i++) {
+        childMenuLink[i].classList.add('is-active');
+      }
+
+    }
+    // ドロップダウンメニューを閉じる処理
+    function dropDownMenuClose(e) {
+      // 子メニューリンク
+      const childMenuLink = e.currentTarget.querySelectorAll('.drop-menu__link');
+      console.log(childMenuLink);
+
+      // is-activeを削除
+      for (let i = 0; i < childMenuLink.length; i++) {
+        childMenuLink[i].classList.remove('is-active');
       }
     }
-
-    // ページがリサイズされたら動かしたい場合の記述
-    $(window).resize(function() {
-      mediaQueriesWin();/* ドロップダウンの関数を呼ぶ*/
-    });
-
-    // ページが読み込まれたらすぐに動かしたい場合の記述
-    $(window).on('load',function(){
-      mediaQueriesWin();/* ドロップダウンの関数を呼ぶ*/
-    });
-  </script>
-  <script>
-    'use strict';
-
-    {
-      // DOM取得
-      // 親メニューのli要素
-      const parentMenuItem = document.querySelectorAll('.menu__item');
-      console.log(parentMenuItem);
-      // イベントを付加
-      for (let i = 0; i < parentMenuItem.length; i++) {
-        parentMenuItem[i].addEventListener('mouseover', dropDownMenuOpen);
-        parentMenuItem[i].addEventListener('mouseleave', dropDownMenuClose);
-      }
-      // ドロップダウンメニューを開く処理
-      function dropDownMenuOpen(e) {
-        // 子メニューa要素
-        const childMenuLink = e.currentTarget.querySelectorAll('.drop-menu__link');
-        console.log(childMenuLink);
-
-        // is-activeを付加
-        for (let i = 0; i < childMenuLink.length; i++) {
-          childMenuLink[i].classList.add('is-active');
-        }
-
-      }
-      // ドロップダウンメニューを閉じる処理
-      function dropDownMenuClose(e) {
-        // 子メニューリンク
-        const childMenuLink = e.currentTarget.querySelectorAll('.drop-menu__link');
-        console.log(childMenuLink);
-
-        // is-activeを削除
-        for (let i = 0; i < childMenuLink.length; i++) {
-          childMenuLink[i].classList.remove('is-active');
-        }
-      }
-    }
-  </script>
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="  crossorigin="anonymous"></script>
-  <script src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/5-1-1/js/5-1-1.js"></script>
-  <iframe allow="join-ad-interest-group" data-tagging-id="AW-312189985" data-load-time="1709600074928" height="0" width="0" style="display: none; visibility: hidden;" src="https://td.doubleclick.net/td/rul/312189985?random=1709600074921&amp;cv=11&amp;fst=1709600074921&amp;fmt=3&amp;bg=ffffff&amp;guid=ON&amp;async=1&amp;gtm=45be42t1za200&amp;gcd=13l3l3l3l1&amp;dma=0&amp;u_w=2560&amp;u_h=1440&amp;url=https%3A%2F%2Fwww.onoyou.jp%2Fblog%2F&amp;ref=https%3A%2F%2Fwww.onoyou.jp%2Fattraction%2F&amp;hn=www.googleadservices.com&amp;frm=0&amp;tiba=%E5%9C%92%E3%83%96%E3%83%AD%E3%82%B0%20%7C%20%E4%BA%AC%E9%83%BD%E5%B8%82%E4%BC%8F%E8%A6%8B%E3%83%BB%E5%B1%B1%E7%A7%91%E3%83%BB%E9%86%8D%E9%86%90%E5%9C%B0%E5%8C%BA%20%E5%B0%8F%E9%87%8E%E5%B9%BC%E7%A8%9A%E5%9C%92&amp;npa=0&amp;pscdl=noapi&amp;auid=213009939.1709014540&amp;uaa=x86&amp;uab=64&amp;uafvl=Chromium%3B122.0.6261.94%7CNot(A%253ABrand%3B24.0.0.0%7CGoogle%2520Chrome%3B122.0.6261.94&amp;uamb=0&amp;uap=macOS&amp;uapv=14.2.1&amp;uaw=0&amp;fledge=1&amp;data=event%3Dgtag.config"></iframe><iframe allow="join-ad-interest-group" data-tagging-id="AW-312189985/HQgLCMuK0_ACEKHI7pQB" data-load-time="1709600074933" height="0" width="0" style="display: none; visibility: hidden;" src="https://td.doubleclick.net/td/rul/312189985?random=1709600074932&amp;cv=11&amp;fst=1709600074932&amp;fmt=3&amp;bg=ffffff&amp;guid=ON&amp;async=1&amp;gtm=45be42t1za200&amp;gcd=13l3l3l3l1&amp;dma=0&amp;u_w=2560&amp;u_h=1440&amp;url=https%3A%2F%2Fwww.onoyou.jp%2Fblog%2F&amp;ref=https%3A%2F%2Fwww.onoyou.jp%2Fattraction%2F&amp;label=HQgLCMuK0_ACEKHI7pQB&amp;hn=www.googleadservices.com&amp;frm=0&amp;tiba=%E5%9C%92%E3%83%96%E3%83%AD%E3%82%B0%20%7C%20%E4%BA%AC%E9%83%BD%E5%B8%82%E4%BC%8F%E8%A6%8B%E3%83%BB%E5%B1%B1%E7%A7%91%E3%83%BB%E9%86%8D%E9%86%90%E5%9C%B0%E5%8C%BA%20%E5%B0%8F%E9%87%8E%E5%B9%BC%E7%A8%9A%E5%9C%92&amp;gtm_ee=1&amp;npa=0&amp;pscdl=noapi&amp;auid=213009939.1709014540&amp;uaa=x86&amp;uab=64&amp;uafvl=Chromium%3B122.0.6261.94%7CNot(A%253ABrand%3B24.0.0.0%7CGoogle%2520Chrome%3B122.0.6261.94&amp;uamb=0&amp;uap=macOS&amp;uapv=14.2.1&amp;uaw=0&amp;fledge=1&amp;capi=1&amp;data=event%3Dconversion&amp;ct_cookie_present=0"></iframe>
-
+  }
+</script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="  crossorigin="anonymous"></script>
+<script src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/5-1-1/js/5-1-1.js"></script>
 </body></html>
 <style>
 
