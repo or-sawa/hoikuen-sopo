@@ -27,7 +27,7 @@
     <script>window.addEventListener('DOMContentLoaded',()=>{const t=document.querySelectorAll(':not(:defined)');for(const e of t) {e.style.visibility="hidden";}; window.spearly.config.AUTH_KEY="5yWbtYiz02UhvlRH_0SorwtfO-g0jXCucMdzQC7XHqs"},{once:true})</script>
     <meta name="google-site-verification" content="lAI6r_BJfLuTr-ymnOMmWhQDpKdrTqgUfFrRlXLPkrs" />
   </head>
-<body data-rsssl="1" class="blog">
+<body data-rsssl="1" class="blog wp-embed-responsive post-type-post vk-blocks unselectable fa_v6_css device-pc scrolled" style="cursor: default;">
   <div class="blog active" id="container">
     <header class="header guidance" style="padding-left: 0px !important; background-color: #88a6a9;">
 
@@ -167,13 +167,51 @@
           </div>
         </div>
       </header>
-<main class="main blog">
       <div class="chapter blog">
         <div class="content-wrap">
           <h1 class="headding-primary"><span class="en">blog</span><span class="ja">園ブログ</span></h1>
         </div>
       </div>
-      <section class="section content-wrap">
+      <div class="site-body">
+        <div class="site-body-container container">
+          <div class="main-section" id="main" role="main">
+            <div class="vk_posts vk_posts-postType-post vk_posts-layout-card">
+              <div id="post-6813" cms-loop
+              cms-content-type="taniyama-sunnyside-blog"
+              cms-option-limit="100"
+              cms-option-order_by_date="desc"
+              style="visibility: visible;" class="vk_post vk_posts-postType-post card card-post vk_post-col-xs-6 vk_post-col-sm-6 vk_post-col-md-6 vk_post_post-col-lg-6 vk_post-col-xl-4 post-6813 post type-post status-publish format-standard has-post-thumbnail hentry category-yousu">
+                <div class="vk_post_imgOuter" style="background-image: url({%= taniyama-sunnyside-blog_image %});">
+                  <a href="{%= taniyama-sunnyside-blog_#url %}">
+                    <!-- <div class="card-img-overlay">
+                      <span class="vk_post_imgOuter_singleTermLabel" style="background-color: #1e73be;">
+                        保育園の様子
+                      </span>
+                    </div> -->
+                    <img src="" alt="" class="vk_post_imgOuter_img card-img-top wp-post-image" sizes="(max-width: 225px) 100vw, 225px">
+                  </a>
+                </div>
+                <div class="vk_post_body card-body">
+                  <h5 class="vk_post_title card-title">
+                    <a href="{%= taniyama-sunnyside-blog_#url %}">
+                      {%= taniyama-sunnyside-blog_title %}
+                      <!-- <span class="vk_post_title_new">New!!</span> -->
+                    </a>
+                  </h5>
+                  <div class="vk_post_date card-date published">{%= taniyama-sunnyside-blog_date %}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <main class="main blog">
+      <!-- <div class="chapter blog">
+        <div class="content-wrap">
+          <h1 class="headding-primary"><span class="en">blog</span><span class="ja">園ブログ</span></h1>
+        </div>
+      </div> -->
+      <!-- <section class="section content-wrap">
         <div class="post-wrap">
           <div class="home-blog list">
             <div class="wrap">
@@ -201,7 +239,7 @@
             </div>
           </div>
         </div>
-      </section>
+      </section> -->
     </main>
     <footer class="footer guidance">
       <div class="inner">
@@ -381,6 +419,392 @@
 <script src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/5-1-1/js/5-1-1.js"></script>
 </body></html>
 <style>
+
+/* New Header */
+body {
+  color: #333333;
+  padding: 0;
+  margin: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+}
+
+.site-header {
+  box-shadow: none;
+}
+
+.site-header {
+  width: 100%;
+  overflow: visible;
+  z-index: 1000;
+  position: relative;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .05);
+}
+
+.site-header::after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.site-header-layout--center .site-header-logo {
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.site-header-logo {
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+  margin-bottom: 0.2rem;
+}
+
+.site-header-logo {
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.5rem;
+  white-space: nowrap;
+  line-height: 1.4em;
+}
+
+.site-header-logo a {
+  color: #333333;
+  text-decoration: none;
+}
+
+.site-header-logo img {
+  max-width: 100%;
+  max-height: 90px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.site-header-logo img {
+  max-height: 60px;
+  max-width: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.page-header {
+  position: relative;
+  color: #fff;
+  background: url() no-repeat 50% center;
+  background-size: cover;
+}
+
+.page-header {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  min-height: 8rem;
+  text-align: center;
+}
+
+.page-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #000;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.page-header-inner {
+  position: relative;
+  z-index: 5;
+  margin: 1.5em auto;
+}
+
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.page-header-title, h1.page-header-title {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.4em;
+  margin: 0;
+}
+
+.page-header-title {
+  font-size: 32px;
+  color: #ffffff;
+  text-shadow: #00a0e9 2px 0, #00a0e9 -2px 0, #00a0e9 0 -2px, #00a0e9 0 2px, #00a0e9 2px 2px, #00a0e9 -2px 2px, #00a0e9 2px -2px, #00a0e9 -2px -2px, #00a0e9 1px 2px, #00a0e9 -1px 2px, #00a0e9 1px -2px, #00a0e9 -1px -2px, #00a0e9 2px 1px, #00a0e9 -2px 1px, #00a0e9 2px -1px, #00a0e9 -2px -1px;
+  padding: 0.5em;
+}
+
+h1, .page-header-title {
+  font-weight: 700;
+  font-display: swap;
+}
+
+.page-header-subtext {
+  margin-top: 0.5rem;
+  line-height: 1.05;
+  font-size: 0.875rem;
+}
+
+.site-body {
+  padding: 2rem 0 2rem;
+}
+
+.main-section, .site-body {
+  position: relative;
+}
+
+.main-section::after, .site-body-container:after, .site-body::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.site-body-container {
+  position: relative;
+}
+
+.main-section {
+  --vk-color-text-link: #ed9e00;
+}
+
+.main-section>div:last-child {
+  margin-bottom: 0;
+}
+
+.vk_posts {
+  margin-left: -15px;
+  margin-right: -15px;
+  display: flex;
+  flex-wrap: wrap;
+  clear: both;
+}
+
+.vk_post.card {
+  padding: 0;
+  margin-bottom: 30px;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+.vk_posts .vk_post-col-xs-6 {
+  width: calc(50% - 30px);
+}
+
+.card {
+  border-radius: 5px;
+}
+
+.card {
+  overflow: hidden;
+  box-shadow: none;
+}
+
+.vk_post {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, .125);
+  border-radius: .25rem;
+}
+
+.vk_post_imgOuter {
+  position: relative;
+  background-size: cover;
+  background-position: center 50%;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.vk_post_imgOuter {
+  position: relative;
+}
+
+.vk_post .vk_post_imgOuter::before {
+  content: "";
+  display: block;
+  padding-top: 62%;
+}
+
+.card a {
+  color: inherit;
+}
+
+.vk_post_imgOuter a {
+  height: 100%;
+}
+
+.vk_post_imgOuter>a::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0);
+  transition-duration: .3s;
+}
+
+.card-img-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1.25rem;
+  border-radius: calc(.25rem - 1px);
+}
+
+.vk_post_imgOuter_singleTermlabel {
+  padding: .7em 1.2em;
+}
+
+.vk_post_imgOuter_singleTermlabel {
+  font-size: 10px;
+  padding: .3em .8em;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 100;
+}
+
+.vk_post_imgOuter_img {
+  position: absolute;
+  left: -9999px;
+}
+
+.card-img-top {
+  border-top-left-radius: calc(.25rem - 1px);
+  border-top-right-radius: calc(.25rem - 1px);
+}
+
+.card-img-top {
+  flex-shrink: 0;
+  width: 100%;
+}
+
+.card-body {
+  flex: 1 1 auto;
+  min-height: 1px;
+  padding: 1rem;
+  /* padding: 1.2rem; */
+}
+
+.vk_post .vk_post_title {
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+
+.vk_post_title {
+  position: relative;
+  background-color: transparent;
+  outline: unset;
+  outline-offset: unset;
+  -webkit-box-shadow: unset;
+  box-shadow: unset;
+  border: none;
+  border-radius: unset;
+  padding: 0;
+  color: inherit;
+}
+
+.card-title {
+  margin-bottom: .75rem;
+}
+
+.vk_post .vk_post_title a {
+  color: #333333;
+}
+
+.vk_post_title_new {
+  margin-left: .4em;
+  font-size: .8em;
+  white-space: nowrap;
+  color: red;
+}
+
+.vk_post .vk_post_date {
+  font-size: 11px;
+  margin-top: .4rem;
+  color: #666666;
+}
+
+@media only screen and (min-width: 480px) {
+  .vk_posts .vk_post-col-xs-6 {
+    width: calc(50% - 250px);
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .page-header-title {
+    font-size: 24px;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .site-header-container--mobile-width--full {
+    max-width: 100%;
+  }
+
+  .site-header-logo--mobile-position--left img {
+    margin-left: 0;
+  }
+}
+
+@media only screen and (max-width: 991.98px) {
+  .site-header-container {
+    display: block;
+    overflow: hidden;
+  }
+
+  .site-header-logo {
+    padding-top: .5rem;
+    margin-bottom: .5rem;
+    white-space: normal;
+  }
+
+  .site-header-logo img {
+    max-height: 50px;
+  }
+
+  .main-section {
+    margin-bottom: 2rem;
+  }
+
+  .main-section {
+    width: 100%;
+    flex-basis: unset;
+  }
+}
 
 .pconly a {
   color: #fff !important;
