@@ -183,19 +183,12 @@
               style="visibility: visible;" class="vk_post vk_posts-postType-post card card-post vk_post-col-xs-6 vk_post-col-sm-6 vk_post-col-md-6 vk_post_post-col-lg-6 vk_post-col-xl-4 post-6813 post type-post status-publish format-standard has-post-thumbnail hentry category-yousu">
                 <div class="vk_post_imgOuter" style="background-image: url({%= taniyama-sunnyside-blog_image %});">
                   <a href="{%= taniyama-sunnyside-blog_#url %}">
-                    <!-- <div class="card-img-overlay">
-                      <span class="vk_post_imgOuter_singleTermLabel" style="background-color: #1e73be;">
-                        保育園の様子
-                      </span>
-                    </div> -->
-                    <img src="" alt="" class="vk_post_imgOuter_img card-img-top wp-post-image" sizes="(max-width: 225px) 100vw, 225px">
                   </a>
                 </div>
                 <div class="vk_post_body card-body">
                   <h5 class="vk_post_title card-title">
                     <a href="{%= taniyama-sunnyside-blog_#url %}">
                       {%= taniyama-sunnyside-blog_title %}
-                      <!-- <span class="vk_post_title_new">New!!</span> -->
                     </a>
                   </h5>
                   <div class="vk_post_date card-date published">{%= taniyama-sunnyside-blog_date %}</div>
@@ -206,45 +199,15 @@
         </div>
       </div>
     <main class="main blog">
-      <!-- <div class="chapter blog">
-        <div class="content-wrap">
-          <h1 class="headding-primary"><span class="en">blog</span><span class="ja">園ブログ</span></h1>
-        </div>
-      </div> -->
-      <!-- <section class="section content-wrap">
-        <div class="post-wrap">
-          <div class="home-blog list">
-            <div class="wrap">
-              <taniyama-sunnyside-blog-list data-item-page-path='item.html' data-perpage='100'>
-                <ul class="list" style="margin: 20px;">
-                    <li class="item news_list">
-                      <a href="{%= taniyama-sunnyside-blog_#url %}">
-                        <div class="blog-section">
-                          <div class="eyecatch">
-                            <img width="150" height="113" src="{%= taniyama-sunnyside-blog_image %}" class="attachment-post_thumbnail size-post_thumbnail wp-post-image" alt="" srcset="{%= taniyama-sunnyside-blog_image %} 1440w, {%= taniyama-sunnyside-blog_image %} 240w, {%= taniyama-sunnyside-blog_image %} 819w, {%= taniyama-sunnyside-blog_image %} 768w, {%= taniyama-sunnyside-blog_image %} 1229w" sizes="(max-width: 1440px) 100vw, 1440px">
-                          </div>
-                          <div class="text">
-                            <time>{%= taniyama-sunnyside-blog_date %}</time>
-                            <h3 class="title">{%= taniyama-sunnyside-blog_title %}</h3>
-                            <br>
-                            <div class="button-more"><span style="font-size: 16px;">詳細を見る</span>
-                              <div class="arrow"></div>
-                            </div>
-                          </div>
-                        </div>
-                      </a>
-                    </li>
-                </ul>
-              </taniyama-sunnyside-blog-list>
-            </div>
-          </div>
-        </div>
-      </section> -->
     </main>
     <footer class="footer guidance">
       <div class="inner">
         <div class="info">
-          <div class="logo"><a href="index.html"><noscript><img class="lazyload" src="images/logo.webp" alt="LOGO" loading="lazy"/></noscript><img class="lazyloaded ls-is-cached" src="images/logo.webp" data-src="" alt="LOGO" loading="lazy"></a></div>
+          <div class="logo">
+            <a href="index.html">
+              <img class="lazyloaded ls-is-cached" src="images/logo.webp" data-src="" alt="LOGO" loading="lazy">
+            </a>
+          </div>
           <div class="access">
             <p class="text-primary">〒891-0116<br class="for-large"><br>鹿児島市上福元町4008-4</p>
           </div>
@@ -337,87 +300,86 @@
       <div class="under"><small class="copyright" style="color: #fff;">© sawa co</small>
       </div>
     </footer>
-</div>
-<script src="taniyama.js"></script>
-<script src="sunny.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js"></script>
-<script type="text/javascript">
-  $(function(){
-      var
-      $container = $('#container');
-  
-  });
-</script>
-<script>
-  //ドロップダウンの設定を関数でまとめる
-  function mediaQueriesWin(){
-    var width = $(window).width();
-    if(width <= 768) {//横幅が768px以下の場合
-      $(".has-child>a").off('click'); //has-childクラスがついたaタグのonイベントを複数登録を避ける為offにして一旦初期状態へ
-      $(".has-child>a").on('click', function() {//has-childクラスがついたaタグをクリックしたら
-        var parentElem =  $(this).parent();// aタグから見た親要素の<li>を取得し
-        $(parentElem).toggleClass('active');//矢印方向を変えるためのクラス名を付与して
-        $(parentElem).children('ul').stop().slideToggle(500);//liの子要素のスライドを開閉させる※数字が大きくなるほどゆっくり開く
-        return false;//リンクの無効化
-      });
-    }else{//横幅が768px以上の場合
-      $(".has-child>a").off('click');//has-childクラスがついたaタグのonイベントをoff(無効)にし
-      $(".has-child").removeClass('active');//activeクラスを削除
-      $('.has-child').children('ul').css("display","");//スライドトグルで動作したdisplayも無効化にする
-    }
-  }
-
-  // ページがリサイズされたら動かしたい場合の記述
-  $(window).resize(function() {
-    mediaQueriesWin();/* ドロップダウンの関数を呼ぶ*/
-  });
-
-  // ページが読み込まれたらすぐに動かしたい場合の記述
-  $(window).on('load',function(){
-    mediaQueriesWin();/* ドロップダウンの関数を呼ぶ*/
-  });
-</script>
-<script>
-  'use strict';
-
-  {
-    // DOM取得
-    // 親メニューのli要素
-    const parentMenuItem = document.querySelectorAll('.menu__item');
-    console.log(parentMenuItem);
-    // イベントを付加
-    for (let i = 0; i < parentMenuItem.length; i++) {
-      parentMenuItem[i].addEventListener('mouseover', dropDownMenuOpen);
-      parentMenuItem[i].addEventListener('mouseleave', dropDownMenuClose);
-    }
-    // ドロップダウンメニューを開く処理
-    function dropDownMenuOpen(e) {
-      // 子メニューa要素
-      const childMenuLink = e.currentTarget.querySelectorAll('.drop-menu__link');
-      console.log(childMenuLink);
-
-      // is-activeを付加
-      for (let i = 0; i < childMenuLink.length; i++) {
-        childMenuLink[i].classList.add('is-active');
-      }
-
-    }
-    // ドロップダウンメニューを閉じる処理
-    function dropDownMenuClose(e) {
-      // 子メニューリンク
-      const childMenuLink = e.currentTarget.querySelectorAll('.drop-menu__link');
-      console.log(childMenuLink);
-
-      // is-activeを削除
-      for (let i = 0; i < childMenuLink.length; i++) {
-        childMenuLink[i].classList.remove('is-active');
+  </div>
+  <script src="taniyama.js"></script>
+  <script src="sunny.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js"></script>
+  <script type="text/javascript">
+    $(function(){
+        var
+        $container = $('#container');
+    
+    });
+  </script>
+  <script>
+    //ドロップダウンの設定を関数でまとめる
+    function mediaQueriesWin(){
+      var width = $(window).width();
+      if(width <= 768) {//横幅が768px以下の場合
+        $(".has-child>a").off('click'); //has-childクラスがついたaタグのonイベントを複数登録を避ける為offにして一旦初期状態へ
+        $(".has-child>a").on('click', function() {//has-childクラスがついたaタグをクリックしたら
+          var parentElem =  $(this).parent();// aタグから見た親要素の<li>を取得し
+          $(parentElem).toggleClass('active');//矢印方向を変えるためのクラス名を付与して
+          $(parentElem).children('ul').stop().slideToggle(500);//liの子要素のスライドを開閉させる※数字が大きくなるほどゆっくり開く
+          return false;//リンクの無効化
+        });
+      }else{//横幅が768px以上の場合
+        $(".has-child>a").off('click');//has-childクラスがついたaタグのonイベントをoff(無効)にし
+        $(".has-child").removeClass('active');//activeクラスを削除
+        $('.has-child').children('ul').css("display","");//スライドトグルで動作したdisplayも無効化にする
       }
     }
-  }
-</script>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="  crossorigin="anonymous"></script>
-<script src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/5-1-1/js/5-1-1.js"></script>
-</body></html>
+
+    // ページがリサイズされたら動かしたい場合の記述
+    $(window).resize(function() {
+      mediaQueriesWin();/* ドロップダウンの関数を呼ぶ*/
+    });
+
+    // ページが読み込まれたらすぐに動かしたい場合の記述
+    $(window).on('load',function(){
+      mediaQueriesWin();/* ドロップダウンの関数を呼ぶ*/
+    });
+  </script>
+  <script>
+    'use strict';
+
+    {
+      // DOM取得
+      // 親メニューのli要素
+      const parentMenuItem = document.querySelectorAll('.menu__item');
+      console.log(parentMenuItem);
+      // イベントを付加
+      for (let i = 0; i < parentMenuItem.length; i++) {
+        parentMenuItem[i].addEventListener('mouseover', dropDownMenuOpen);
+        parentMenuItem[i].addEventListener('mouseleave', dropDownMenuClose);
+      }
+      // ドロップダウンメニューを開く処理
+      function dropDownMenuOpen(e) {
+        // 子メニューa要素
+        const childMenuLink = e.currentTarget.querySelectorAll('.drop-menu__link');
+        console.log(childMenuLink);
+
+        // is-activeを付加
+        for (let i = 0; i < childMenuLink.length; i++) {
+          childMenuLink[i].classList.add('is-active');
+        }
+
+      }
+      // ドロップダウンメニューを閉じる処理
+      function dropDownMenuClose(e) {
+        // 子メニューリンク
+        const childMenuLink = e.currentTarget.querySelectorAll('.drop-menu__link');
+        console.log(childMenuLink);
+
+        // is-activeを削除
+        for (let i = 0; i < childMenuLink.length; i++) {
+          childMenuLink[i].classList.remove('is-active');
+        }
+      }
+    }
+  </script>
+</body>
+</html>
 <style>
 
 /* New Header */
@@ -909,193 +871,9 @@ li {
     display: block;
   }
 
-  .blog-card-wrap {
-    background: #f4f4f4;
-    box-shadow: inset 0 1px rgba(0, 0, 0, 0.0);
-    padding: 12px;
-    border-radius: 20px;
-    transition: all 0.3s ease;
-  }
-
-  .blog-card {
-    position: relative;
-    overflow: hidden;
-  }
-
-  .group {
-    zoom: 1;
-  }
-
-  .group::after {
-    clear: both;
-  }
-
-  .group::before, .group::after {
-    content: "";
-    display: table;
-  }
-
-  .blog-card-inner {
-    display: block;
-    height: 220px;
-    background-color: #fff;
-    background-position: center;
-    background-size: cover;
-    border-radius: 14px;
-    position: relative;
-    z-index: 2;
-    overflow: hidden;
-    position: relative;
-  }
-
-  .blog-card-bottom {
-    position: relative;
-    z-index: 3;
-    padding-bottom: 20px;
-  }
-
-  .blog-card-more-link {
-    background: linear-gradient(90deg, #c14bff 0%, #6c5dd3 100%);
-    color: #fff;
-    border-radius: 14px;
-    padding: 3px 15px;
-    font-weight: 600;
-    text-transform: uppercase;
-    font-size: 13px;
-    position: absolute;
-    right: 3px;
-    top: -32px;
-  }
-
-  .fas {
-    font-weight: 900;
-  }
-
-  .fas {
-    -webkit-font-smoothing: antialiased;
-    display: inline-block;
-    font-style: normal;
-    font-variant: normal;
-    line-height: 1;
-    text-rendering: auto;
-  }
-
-  .fas, .far {
-    width: 1em;
-    text-align: center;
-  }
-
-  .fa-chevron-right::before {
-    content: "\f054";
-  }
-
-  .blog-card-title {
-    color: #333;
-    font-size: 24px;
-    font-weight: 800;
-    line-height: 1.4em;
-    margin-bottom: 14px;
-    padding: 30px 20px 0;
-  }
-
-  .blog-card-title a {
-    color: #333;
-  }
-
-  .blog-card-meta {
-    padding: 0 20px 0;
-    font-size: 15px;
-    color: rgba(0, 0, 0, 0.5);
-  }
-
-  .blog-card-meta li:last-child {
-    margin-right: 0;
-    padding-right: 0;
-    border-right: 0;
-  }
-
-  .blog-card-meta li {
-    float: left;
-    border-right: 1px solid #ddd;
-    padding-right: 20px;
-    margin-right: 20px;
-    margin-bottom: 4px;
-  }
-
-  .blog-card-meta li i {
-    margin-right: 6px;
-  }
-
-  .far {
-    font-weight: 400;
-  }
-
-  .far {
-    -webkit-font-smoothing: antialiased;
-    display: inline-block;
-    font-style: normal;
-    font-variant: normal;
-    line-height: 1;
-    text-rendering: auto;
-  }
-
-  .fa-calendar::before {
-    content: "\f133";
-  }
-
-  .blog-card-excerpt {
-    padding: 10px 20px 0;
-    font-size: 16px;
-    line-height: 1.6em;
-    color: rgba(0, 0, 0, 0.5);
-  }
-
-  .blog-card-category {
-    padding: 0 20px 10px;
-  }
-
-  .blog-card-category a {
-    background: #fff;
-    color: #9754e9;
-    font-weight: 600;
-    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
-    border-radius: 20px;
-    padding: 4px 12px;
-    margin-right: 6px;
-    margin-bottom: 4px;
-    display: block;
-    float: left;
-  }
-
   @media only screen and (max-width: 480px) {
     #spearly-list-body {
       display: block;
-    }
-
-    .blog-card-wrap {
-      padding: 4px;
-    }
-  }
-
-  @media only screen and (max-width: 1080px) {
-    .blog-card-inner {
-      height: 180px;
-    }
-
-    .blog-card-title {
-      font-size: 18px;
-    }
-
-    .blog-card-meta {
-      font-size: 14px;
-    }
-
-    .blog-card-excerpt {
-      font-size: 14px;
-    }
-
-    .blog-card-category a {
-      font-size: 13px;
     }
   }
 
