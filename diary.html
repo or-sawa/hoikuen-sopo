@@ -175,7 +175,7 @@
       <div class="site-body">
         <div class="site-body-container container">
           <div class="main-section" id="main" role="main">
-            <div class="vk_posts vk_posts-postType-post vk_posts-layout-card">
+            <div class="vk_posts vk_posts-postType-post vk_posts-layout-card" id="target-element">
               <div id="post-6813" cms-loop
               cms-content-type="taniyama-sunnyside-blog"
               cms-option-limit="100"
@@ -377,10 +377,20 @@
         }
       }
     }
+
+    window.addEventListener('spearlyCmsAfterInit', (evt) => {
+      const targetElement = document.querySelector('#target-element');
+
+      targetElement.style.visibility = 'visible';
+    });
   </script>
 </body>
 </html>
 <style>
+
+  #target-element {
+    visibility: hidden;
+  }
 
 /* New Header */
 body {
