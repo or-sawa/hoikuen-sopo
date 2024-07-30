@@ -183,7 +183,7 @@
               </div>
             </a>
           </div>
-          <taniyama-sunnyside-blog-item style="width: 100% !important; overflow: hidden !important;">
+          <taniyama-sunnyside-blog-item style="width: 100% !important; overflow: hidden !important;" id="target-element">
             <div class="post-content">
               <div class="post">
                 <time>{%= taniyama-sunnyside-blog_date %}</time>
@@ -382,11 +382,21 @@
       }
     }
   }
+
+  window.addEventListener('spearlyCmsAfterInit', (evt) => {
+    const targetElement = document.querySelector('#target-element');
+
+    targetElement.style.visibility = 'visible';
+  });
 </script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="  crossorigin="anonymous"></script>
 <script src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/5-1-1/js/5-1-1.js"></script>
 </body></html>
 <style>
+
+  #target-element {
+    visibility: hidden;
+  }
 
 .pconly a {
   color: #fff !important;
