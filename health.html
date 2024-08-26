@@ -169,15 +169,15 @@
         <!-- <div class="image"></div> -->
         <br><br><br><br><br><br>
         <div class="contents">
-          <h1 class="title"><span class="en">health care of <br class="for-small">sunny side</span><span class="ja">サニーサイド保育園 健康管理について。</span></h1>
+          <h1 class="title" style="margin-bottom: 0 !important;"><span class="en">health care of <br class="for-small">sunny side</span><span class="ja">サニーサイド保育園 健康管理について。</span></h1>
           <!-- <p class="text-primary center read">幼稚園は、人との関わりを先生や園児同士の中で経験し、<br class="for-large">社会性や思いやりという人間の根っことなる部分を作っていく場だと、私たちは考えています。<br class="for-large">先生が教えて学ぶのではなく、園児自ら発見し、身に付ける環境が備わった魅力いっぱいの小野幼稚園の7つの魅力をご紹介します。</p> -->
         </div>
-        <div class="scroll js-scroll">
+        <!-- <div class="scroll js-scroll">
           <a href="#first">
           <p class="text">scroll</p>
           <div class="line"></div>
           </a>
-        </div>
+        </div> -->
       </div>
     </section>
     <main class="main attraction" style="background-color: #fef7f0 !important;">
@@ -291,11 +291,7 @@
                     </li>
                   </ul>
                 </p>
-                <!-- <a class="button-flat" href="../day"><span>園の1日について</span></a> -->
-              </div>
-            </li>
-            <li class="list fade-in">
-              <div class="contents">
+                <br><br>
                 <p class="number"><span class="en"></span><span class="num"></span></p>
                 <h2 class="title">感染症の対応について</h2>
                 <p class="text-primary read">
@@ -313,19 +309,28 @@
                     </li>
                   </ul>
                 </p>
-                <!-- <a class="button-flat" href="../outline"><span>園の概要について</span></a> -->
-              </div>
-            </li>
-            <li class="list fade-in" style="display: block;">
-              <div class="contents">
-                <p class="number"><span class="en"></span><span class="num"></span></p>
-                <h2 class="title">感染症の登園基準</h2>
-                <p class="text-primary read">★主治医の判断を受けてから登園してください。</p>
-              </div>
-              <div class="image"><noscript><img class="lazyload" src="images/standards.webp" alt="" loading="lazy"></noscript><img class="lazyload lazyload" src="images/standards.webp" data-src="" alt="" loading="lazy">
+                <!-- <a class="button-flat" href="../day"><span>園の1日について</span></a> -->
               </div>
             </li>
           </ul>
+          <br><br><br><br>
+          <div style="margin-top: 40px !important;">
+            <ul class="wrap">
+              <li class="list fade-in" style="display: block;">
+                <div class="contents" style="text-align: center;">
+                  <p class="number"><span class="en"></span><span class="num"></span></p>
+                  <h2 class="title">感染症の登園基準</h2>
+                  <p class="text-primary read" style="text-align: center;">★主治医の判断を受けてから登園してください。</p>
+                </div>
+                <div class="image">
+                  <noscript>
+                    <img class="lazyload" src="images/standards.webp" alt="" loading="lazy" style="max-width: 100%;">
+                  </noscript>
+                  <img class="lazyload lazyload" src="images/standards.webp" data-src="" alt="" loading="lazy" style="max-width: 100%;">
+                </div>
+              </li>
+            </ul>
+          </div>
         </div>
       </section>
     </main>
@@ -685,6 +690,10 @@ li {
   @media only screen and (min-width: 1080px) {
     .hamburger {
       display: none;
+    }
+
+    .attraction-detail {
+      margin-top: -800px;
     }
   }
 </style>
