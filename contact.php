@@ -81,7 +81,7 @@ if( !empty($_POST['btn_confirm']) ) {
         </li>
 
         <li class="menu__item">
-          <a href="contact.html" class="menu__link">お問い合わせ</a>
+          <a href="contact.php" class="menu__link">お問い合わせ</a>
         </li>
       </ul>
       <div class="nav">
@@ -143,7 +143,7 @@ if( !empty($_POST['btn_confirm']) ) {
                     </ul>
                   </li>
                   <li class="list">
-                    <a class="parent" href="contact.html">
+                    <a class="parent" href="contact.php">
                       <span class="ja">お問い合わせ</span>
                       <span class="en">contact</span>
                     </a>
@@ -217,9 +217,7 @@ if( !empty($_POST['btn_confirm']) ) {
         <input type="hidden" name="c-subject" value="<?php echo $_POST['c-subject']; ?>">
         <input type="hidden" name="c-message" value="<?php echo $_POST['c-message']; ?>">
 
-        <?php
-            if ($_POST['token'] === $_SESSION['token'])
-        ?>
+        
       </form>
 
       <?php
@@ -240,7 +238,7 @@ if( !empty($_POST['btn_confirm']) ) {
           $header .= "Reply-To: hoikuen sopo <sawa.co.sopo1@outlook.jp>\n";
 
           // 件名を設定
-          $auto_reply_subject = '申し込みありがとうございます。';
+          $auto_reply_subject = 'お問い合わせありがとうございます。';
 
           // 本文を設定
           $auto_reply_text = "この度は、保育園そぽにお問い合わせ頂き誠にありがとうございます。
@@ -256,7 +254,7 @@ if( !empty($_POST['btn_confirm']) ) {
           $auto_reply_text .= "このメールは送信専用ですので、返信される場合はsawa.co.sopo1@outlook.jpまでお願い致します。" . "\n\n";
           $auto_reply_text .= "保育園 そぽ";
 
-          $to = $_POST['email'];
+          $to = $_POST['c-mail'];
 
           $admin = "s.seisaku.co@icloud.com";
 
@@ -412,7 +410,7 @@ if( !empty($_POST['btn_confirm']) ) {
                 </label>
               </div> -->
               <p>
-                <input type="hidden" name="taken" value="28cnhprap6as0gs44og4wwc0kokcs80s">
+                <!-- <input type="hidden" name="token" value="28cnhprap6as0gs44og4wwc0kokcs80s"> -->
                 <input id="send" type="submit" name="btn_confirm" class="button-flat is-disabled" value="送信内容を確認">
               </p>
               <div class="button-wrap">
@@ -494,7 +492,7 @@ if( !empty($_POST['btn_confirm']) ) {
               </ul>
             </li>
             <li class="list">
-              <a class="parent" href="contact.html">
+              <a class="parent" href="contact.php">
                 <span class="ja">お問い合わせ</span>
                 <span class="en">contact</span>
               </a>
