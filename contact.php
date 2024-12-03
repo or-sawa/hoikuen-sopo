@@ -1,3 +1,18 @@
+<?php
+// 変数の初期化
+$page_flag = 0;
+
+if( !empty($_POST['btn_confirm']) ) {
+
+	$page_flag = 1;
+
+} elseif( !empty($_POST['btn_submit']) ) {
+
+  $page_flag = 2;
+
+}
+?>
+
 <html lang="ja">
   <head>
     <meta charset="utf-8">
@@ -65,14 +80,9 @@
           </ul>
         </li>
 
-        <!-- <li class="menu__item">
-          <a href="application.html" class="menu__link">申請書・重要事項説明書一覧</a>
-          <ul class="drop-menu">
-            <li class="drop-menu__item"><a href="application.html#application" class="drop-menu__link">申請書</a></li>
-            <li class="drop-menu__item"><a href="application.html#appraisal" class="drop-menu__link">第三者評価</a></li>
-            <li class="drop-menu__item"><a href="application.html#complaint" class="drop-menu__link">苦情対応について</a></li>
-          </ul>
-        </li> -->
+        <li class="menu__item">
+          <a href="contact.html" class="menu__link">お問い合わせ</a>
+        </li>
       </ul>
       <div class="nav">
         <nav class="global-nav">
@@ -132,29 +142,12 @@
                       </li>
                     </ul>
                   </li>
-                  <!-- <li class="list">
-                    <a class="parent" href="application.html">
-                      <span class="ja">申請書・重要事項説明書一覧</span>
-                      <span class="en">application</span>
+                  <li class="list">
+                    <a class="parent" href="contact.html">
+                      <span class="ja">お問い合わせ</span>
+                      <span class="en">contact</span>
                     </a>
-                    <ul class="child">
-                      <li class="item">
-                        <a href="application.html#application">
-                          <span>申請書</span>
-                        </a>
-                      </li>
-                      <li class="item">
-                        <a href="application.html#appraisal">
-                          <span>第三者評価</span>
-                        </a>
-                      </li>
-                      <li class="item">
-                        <a href="application.html#complaint">
-                          <span>苦情対応について</span>
-                        </a>
-                      </li>
-                    </ul>
-                  </li> -->
+                  </li>
                 </ul>
               </div>
             </div>
@@ -164,21 +157,151 @@
         </div>
       </div>
     </header>
-    <section class="section">
+
+    <?php if( $page_flag === 1 ): ?>
+
+      <h1 style="text-align: center; font-size: 20px; margin-top: 100px; margin-bottom: 25px;">入力内容の確認</h1>
+
+      <form id="f1" method="post" action="thanks.html" style="text-align: center;">
+        <div class="element_wrap">
+          <label>お名前</label>
+          <br>
+          <p><?php echo $_POST['c-name']; ?></p>
+        </div>
+        <br>
+        <div class="element_wrap">
+          <label>フリガナ</label>
+          <br>
+          <p><?php echo $_POST['c-kana']; ?></p>
+        </div>
+        <br>
+        <div class="element_wrap">
+          <label>メールアドレス</label>
+          <br>
+          <p><?php echo $_POST['c-mail']; ?></p>
+        </div>
+        <br>
+        <div class="element_wrap">
+          <label>メールアドレス確認用</label>
+          <br>
+          <p><?php echo $_POST['c-mail02']; ?></p>
+        </div>
+        <br>
+        <div class="element_wrap">
+          <label>お電話番号</label>
+          <br>
+          <p><?php echo $_POST['c-phone']; ?></p>
+        </div>
+        <br>
+        <div class="element_wrap">
+          <label>件名</label>
+          <br>
+          <p><?php echo $_POST['c-subject']; ?></p>
+        </div>
+        <br>
+        <div class="element_wrap">
+          <label>問い合わせ内容</label>
+          <br>
+          <p><?php echo $_POST['c-message']; ?></p>
+        </div>
+        <br>
+        
+        <a href="contact.php">戻る</a>
+
+        <input type="submit" name="btn_submit" value="入力内容を送信" onclick="submitSJIS();">
+        <input type="hidden" name="c-name" value="<?php echo $_POST['c-name']; ?>">
+        <input type="hidden" name="c-kana" value="<?php echo $_POST['c-kana']; ?>">
+        <input type="hidden" name="c-mail" value="<?php echo $_POST['c-mail']; ?>">
+        <input type="hidden" name="c-mail02" value="<?php echo $_POST['c-mail02']; ?>">
+        <input type="hidden" name="c-phone" value="<?php echo $_POST['c-phone']; ?>">
+        <input type="hidden" name="c-subject" value="<?php echo $_POST['c-subject']; ?>">
+        <input type="hidden" name="c-message" value="<?php echo $_POST['c-message']; ?>">
+
+        <?php
+            if ($_POST['token'] === $_SESSION['token'])
+        ?>
+      </form>
+
+      <?php
+    
+          mb_language("Japanese");
+          mb_internal_encoding("UTF-8");
+
+          $header = null;
+          $auto_reply_subject = null;
+          $auto_reply_text = null;
+          $auto_reply_subject = null;
+          $auto_reply_text = null;
+          date_default_timezone_set('Asia/Tokyo');
+
+          // ヘッダー情報を設定
+          $header = "MIME-Version: 1.0\n";
+          $header .= "From: hoikuen sopo <sawa.co.sopo1@outlook.jp>\n";
+          $header .= "Reply-To: hoikuen sopo <sawa.co.sopo1@outlook.jp>\n";
+
+          // 件名を設定
+          $auto_reply_subject = '申し込みありがとうございます。';
+
+          // 本文を設定
+          $auto_reply_text = "この度は、保育園そぽにお問い合わせ頂き誠にありがとうございます。
+          下記の内容でお問い合わせを受け付けました。\n\n";
+          $auto_reply_text .= "お問い合わせ日時：" . date("Y-m-d H:i") . "\n";
+          $auto_reply_text .= "お名前：" . $_POST['c-name'] . "\n";
+          $auto_reply_text .= "フリガナ：" . $_POST['c-kana'] . "\n";
+          $auto_reply_text .= "メールアドレス：" . $_POST['c-mail'] . "\n";
+          $auto_reply_text .= "メールアドレス確認用：" . $_POST['c-mail02'] . "\n";
+          $auto_reply_text .= "お電話番号：" . $_POST['c-phone'] . "\n";
+          $auto_reply_text .= "件名：" . $_POST['c-subject'] . "\n";
+          $auto_reply_text .= "問い合わせ内容：" . $_POST['c-message'] . "\n\n";
+          $auto_reply_text .= "このメールは送信専用ですので、返信される場合はsawa.co.sopo1@outlook.jpまでお願い致します。" . "\n\n";
+          $auto_reply_text .= "保育園 そぽ";
+
+          $to = $_POST['email'];
+
+          $admin = "s.seisaku.co@icloud.com";
+
+          mb_send_mail($to, $auto_reply_subject, $auto_reply_text, $header);
+
+          // 運営側へ送るメールの件名
+          $admin_reply_subject = "保育園そぽへの問い合わせを受け付けました";
+          
+          // 本文を設定
+          $admin_reply_text = "下記の内容で問い合わせがありました。\n\n";
+          $admin_reply_text .= "問い合わせ日時：" . date("Y-m-d H:i") . "\n";
+          $admin_reply_text .= "お名前：" . $_POST['c-name'] . "\n";
+          $admin_reply_text .= "フリガナ：" . $_POST['c-kana'] . "\n";
+          $admin_reply_text .= "メールアドレス：" . $_POST['c-mail'] . "\n";
+          $admin_reply_text .= "メールアドレス確認用：" . $_POST['c-mail02'] . "\n";
+          $admin_reply_text .= "お電話番号：" . $_POST['c-phone'] . "\n";
+          $admin_reply_text .= "件名：" . $_POST['c-subject'] . "\n";
+          $admin_reply_text .= "問い合わせ内容：" . $_POST['c-message'] . "\n\n";
+
+          // 運営側へメール送信
+          mb_send_mail($admin, $admin_reply_subject, $admin_reply_text, $header);
+        ?>
+
+    <?php elseif( $page_flag === 2 ): ?>
+
+    <p>送信が完了しました。</p> 
+
+    <?php else: ?>
+
+
+    <section class="section" style="margin-top: 200px;">
       <div class="contact-form content-wrap">
         <h2 class="headding-senary">
-          <span class="en">contact form</span>
-          <span class="ja">コンタクトフォーム</span>
+          <span class="en">園へのお問い合わせ</span>
+          <span class="ja" style="font-size: 20px;">contact</span>
         </h2>
         <p class="text-primary">
           WEBサイトからのお問い合わせには、返信に1〜2日いただくことがございます。お急ぎの方は、お電話でご連絡ください。
           <br>
-          また、ご入力いただいた後、プライバシーポリシー同意の上「送信内容の確認」ボタンを押してください。
+          ご入力いただいた後、「送信内容の確認」ボタンを押してください。
           <br>
           ※必須科目
         </p>
         <div id="mw_wp_form_mw-wp-form-37" class="mw_wp_form mw_wp_form_input">
-          <form method="post" enctype="multipart/form-data">
+          <form method="post">
             <div class="form">
               <p class="head">
                 入力内容
@@ -193,7 +316,7 @@
                       </span>
                     </th>
                     <td>
-                      <input type="text" name="c-name" class="full" size="60">
+                      <input type="text" name="c-name" class="full" size="60" placeholder="田中　太郎" required="required">
                     </td>
                   </tr>
                   <tr>
@@ -204,7 +327,7 @@
                       </span>
                     </th>
                     <td>
-                      <input type="text" name="c-kana" class="full" size="60">
+                      <input type="text" name="c-kana" class="full" size="60" placeholder="たなか　たろう" required="required">
                     </td>
                   </tr>
                   <tr>
@@ -215,7 +338,7 @@
                       </span>
                     </th>
                     <td>
-                      <input type="email" name="c-mail" class="full" size="60">
+                      <input type="email" name="c-mail" class="full" size="60" placeholder="xxxx@example.com" required="required">
                     </td>
                   </tr>
                   <tr>
@@ -226,10 +349,21 @@
                       </span>
                     </th>
                     <td>
-                      <input type="email" name="c-mail02" class="full" size="60">
+                      <input type="email" name="c-mail02" class="full" size="60" placeholder="xxxx@example.com" required="required">
                     </td>
                   </tr>
                   <tr>
+                    <th>
+                      お電話番号
+                      <span class="required">
+                        ※
+                      </span>
+                    </th>
+                    <td>
+                      <input type="tel" name="c-phone" class="full" size="60" placeholder="080-xxxx-xxxx" required="required">
+                    </td>
+                  </tr>
+                  <!-- <tr>
                     <th>
                       ご住所
                     </th>
@@ -243,6 +377,17 @@
                       <input type="hidden" name="c-postcode[separator]" value="-">
                       <br>
                       <input type="text" name="c-add" class="full add" size="60">
+                    </td>
+                  </tr> -->
+                  <tr>
+                    <th>
+                      件名
+                      <span class="required">
+                        ※
+                      </span>
+                    </th>
+                    <td>
+                      <input type="text" name="c-subject" class="full" size="60" placeholder="園児の空き状況について" required="required">
                     </td>
                   </tr>
                   <tr>
@@ -258,28 +403,29 @@
                   </tr>
                 </tbody>
               </table>
-              <div class="check">
+              <!-- <div class="check">
                 <label>
                   <br>
                   <input class="privacy" type="checkbox">
                   <span>下記、プライバシーポリシーに同意する</span>
                   <br>
                 </label>
-              </div>
+              </div> -->
               <p>
-                <button type="submit" name="submitConfirm" value="confirm" class="button-flat is-disabled" disabled>
-                  送信内容を確認
-                </button>
+                <input type="hidden" name="taken" value="28cnhprap6as0gs44og4wwc0kokcs80s">
+                <input id="send" type="submit" name="btn_confirm" class="button-flat is-disabled" value="送信内容を確認">
               </p>
               <div class="button-wrap">
                 <br>
               </div>
             </div>
-            <input type="text">
           </form>
         </div>
       </div>
     </section>
+
+    <?php endif; ?>
+
     <footer class="footer guidance">
       <div class="inner">
         <div class="info">
@@ -347,29 +493,12 @@
                 </li>
               </ul>
             </li>
-            <!-- <li class="list">
-              <a class="parent" href="application.html">
-                <span class="ja">申請書・重要事項説明書一覧</span>
-                <span class="en">application</span>
+            <li class="list">
+              <a class="parent" href="contact.html">
+                <span class="ja">お問い合わせ</span>
+                <span class="en">contact</span>
               </a>
-              <ul class="child">
-                <li class="item">
-                  <a href="application.html#application">
-                    <span>申請書</span>
-                  </a>
-                </li>
-                <li class="item">
-                  <a href="application.html#appraisal">
-                    <span>第三者評価</span>
-                  </a>
-                </li>
-                <li class="item">
-                  <a href="application.html#complaint">
-                    <span>苦情対応について</span>
-                  </a>
-                </li>
-              </ul>
-            </li> -->
+            </li>
           </ul>
         </div>
       </div>
