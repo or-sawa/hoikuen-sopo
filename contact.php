@@ -411,7 +411,7 @@ if( !empty($_POST['btn_confirm']) ) {
               </div> -->
               <p>
                 <!-- <input type="hidden" name="token" value="28cnhprap6as0gs44og4wwc0kokcs80s"> -->
-                <input id="send" type="submit" name="btn_confirm" class="button-flat is-disabled" value="送信内容を確認">
+                <input id="send" type="submit" name="btn_confirm" class="button-flat is-disabled" value="送信内容を確認" style="color: #333;">
               </p>
               <div class="button-wrap">
                 <br>
