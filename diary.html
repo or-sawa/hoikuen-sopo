@@ -145,37 +145,42 @@
         </div>
       </div>
     </header>
-      <div class="chapter blog">
-        <div class="content-wrap">
-          <h1 class="headding-primary"><span class="en">blog</span><span class="ja">園ブログ</span></h1>
-        </div>
+    <div class="chapter blog">
+      <div class="content-wrap">
+        <h1 class="headding-primary"><span class="en">blog</span><span class="ja">園ブログ</span></h1>
       </div>
-      <div class="site-body">
-        <div class="site-body-container container">
-          <div class="main-section" id="main" role="main">
-            <div class="vk_posts vk_posts-postType-post vk_posts-layout-card" id="target-element">
-              <div id="post-6813" cms-loop
-              cms-content-type="hoikuen-sopo-blog"
-              cms-option-limit="100"
-              cms-option-order_by_date="desc"
-              style="visibility: visible;" class="vk_post vk_posts-postType-post card card-post vk_post-col-xs-6 vk_post-col-sm-6 vk_post-col-md-6 vk_post_post-col-lg-6 vk_post-col-xl-4 post-6813 post type-post status-publish format-standard has-post-thumbnail hentry category-yousu">
-                <div class="vk_post_imgOuter" style="background-image: url({%= hoikuen-sopo-blog_image %});">
+    </div>
+    <div class="site-body">
+      <div class="site-body-container container">
+        <div class="main-section" id="main" role="main">
+          <div class="vk_posts vk_posts-postType-post vk_posts-layout-card" id="target-element">
+            <div id="post-6813" cms-loop
+            cms-content-type="hoikuen-sopo-blog"
+            cms-option-limit="10"
+            cms-loop-id="news-loop"
+            cms-option-order_by_date="desc"
+            style="visibility: visible;" class="vk_post vk_posts-postType-post card card-post vk_post-col-xs-6 vk_post-col-sm-6 vk_post-col-md-6 vk_post_post-col-lg-6 vk_post-col-xl-4 post-6813 post type-post status-publish format-standard has-post-thumbnail hentry category-yousu">
+              <div class="vk_post_imgOuter" style="background-image: url({%= hoikuen-sopo-blog_image %});">
+                <a href="{%= hoikuen-sopo-blog_#url %}">
+                </a>
+              </div>
+              <div class="vk_post_body card-body">
+                <h5 class="vk_post_title card-title">
                   <a href="{%= hoikuen-sopo-blog_#url %}">
+                    {%= hoikuen-sopo-blog_title %}
                   </a>
-                </div>
-                <div class="vk_post_body card-body">
-                  <h5 class="vk_post_title card-title">
-                    <a href="{%= hoikuen-sopo-blog_#url %}">
-                      {%= hoikuen-sopo-blog_title %}
-                    </a>
-                  </h5>
-                  <div class="vk_post_date card-date published">{%= hoikuen-sopo-blog_date %}</div>
-                </div>
+                </h5>
+                <div class="vk_post_date card-date published">{%= hoikuen-sopo-blog_date %}</div>
               </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
+    <div class="pager">
+      <button class="prev page-numbers" cms-loop-id="news-loop" cms-prev-button>>> 前の記事へ</button>
+      <button class="next page-numbers" cms-loop-id="news-loop" cms-next-button>次の記事へ >></button>
+    </div>
     <footer class="footer guidance">
       <div class="inner">
         <div class="info">
@@ -269,3 +274,102 @@
   <script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js"></script>
 </body>
 </html>
+<style>
+  .pager {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    justify-content: center;
+  }
+
+  .pager .page-numbers.next {
+    margin-left: 30px;
+    padding: 15px 15px;
+  }
+
+  .pager .page-numbers.prev {
+    margin-right: 30px;
+    padding: 15px 15px;
+  }
+
+  .pager .page-numbers {
+    font-family: URWDINC-XLight;
+    border: none;
+    font-size: 20px;
+    letter-spacing: .026em;
+    margin: 80px 12px 0;
+    padding: 15px 3px;
+    position: relative;
+    text-decoration: none;
+    -webkit-transition: opacity .5s ease-out;
+    transition: opacity .5s ease-out;
+    cursor: pointer;
+  }
+
+  .pager .page-numbers.next::before {
+    content: "";
+    display: block;
+    height: 1px;
+    width: 100%;
+    position: absolute;
+    top: auto;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transition-property: transform, -webkit-transfrom;
+    transition-duration: .3s;
+    transition-timing-function: ease;
+    -webkit-transition-delay: 0;
+    transition-delay: 0;
+    background-color: #000;
+    margin: auto;
+    transform: scaleX(0);
+    transform-origin: right top;
+  }
+
+  .pager .page-numbers.next::after {
+    content: "";
+    display: block;
+    height: 1px;
+    width: 100%;
+    position: absolute;
+    top: auto;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transition-property: transform, -webkit-transfrom;
+    transition-duration: .3s;
+    transition-timing-function: ease;
+    -webkit-transition-delay: 0;
+    transition-delay: 0;
+    background-color: #000;
+    margin: auto;
+    transform: scaleX(0);
+    transform-origin: right top;
+  }
+
+  @media only screen and (max-width: 736px) {
+    .pager .page-numbers.next {
+      margin-left: 20px;
+    }
+
+    .pager .page-numbers.prev {
+      margin-right: 20px;
+    }
+
+    .pager .page-numbers {
+      font-size: 13px;
+      margin: 25px 6px 0;
+    }
+
+    .pager .page-numbers.next::before {
+      width: 100%;
+    }
+
+    .pager .page-numbers.next::after {
+      width: 100%;
+    }
+  }
+</style>
