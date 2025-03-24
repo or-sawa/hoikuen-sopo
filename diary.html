@@ -272,6 +272,14 @@
   <script src="sunny.js"></script>
   <script src="diary.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js"></script>
+  <script>
+    $(".page-numbers").click(function() {
+      $("html, body").animate({
+        scrollTop: 0
+      });
+      return false;
+    });
+  </script>
 </body>
 </html>
 <style>
