@@ -279,7 +279,7 @@
       </div>
     </footer>
   </div>
-  <script src="kanmachi.js"></script>
+  <script src="taniyama.js"></script>
   <script src="sunny.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js"></script>
   <script type="text/javascript">
@@ -366,228 +366,101 @@
   <script src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/5-1-1/js/5-1-1.js"></script>
 </body></html>
 <style>
-
-  #target-element {
-    visibility: hidden;
-  }
-
-  .pconly a {
-    color: #fff;
-  }
-
-  *, *::after, *::before {
-    box-sizing: border-box;
-  }
-
-  body {
-    margin: 0;
-    padding: 0;
-  }
-
-  a {
-    color: #333;
-    text-decoration: none;
-  }
-
-  ul {
-    padding: 0;
-    margin: 0;
-  }
-
-  li {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  /* main {
-    width: 100%;
-    margin: 0px auto 10px;
-    background-color: lightcyan;
-  } */
-
-  .menu {
+  .pager {
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
+    -webkit-flex-wrap: nowrap;
+    flex-wrap: nowrap;
     justify-content: center;
   }
 
-  .menu__link {
+  .pager .page-numbers.next {
+    margin-left: 30px;
+    padding: 15px 15px;
+  }
+
+  .pager .page-numbers.prev {
+    margin-right: 30px;
+    padding: 15px 15px;
+  }
+
+  .pager .page-numbers {
+    font-family: URWDINC-XLight;
+    border: none;
+    font-size: 20px;
+    letter-spacing: .026em;
+    margin: 80px 12px 0;
+    padding: 15px 3px;
+    position: relative;
+    text-decoration: none;
+    -webkit-transition: opacity .5s ease-out;
+    transition: opacity .5s ease-out;
+    cursor: pointer;
+  }
+
+  .pager .page-numbers.next::before {
+    content: "";
     display: block;
-    padding: 10px 20px;
-  }
-
-  .menu__link:hover {
-    background-color: #a9a9a9;
-    color: #666;
-  }
-
-  .drop-menu {
+    height: 1px;
+    width: 100%;
     position: absolute;
-    top: 43px;
-    transition: all .3s;
+    top: auto;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transition-property: transform, -webkit-transfrom;
+    transition-duration: .3s;
+    transition-timing-function: ease;
+    -webkit-transition-delay: 0;
+    transition-delay: 0;
+    background-color: #000;
+    margin: auto;
+    transform: scaleX(0);
+    transform-origin: right top;
   }
 
-  .drop-menu__link {
+  .pager .page-numbers.next::after {
+    content: "";
     display: block;
-    display: none;
-    background-color: #a9a9a9;
-    transition: all .3s;
-    padding: 5px 20px;
-  }
-
-  .drop-menu__link:hover {
-    background-color: #808080;
-  }
-
-  /* ドロップダウン出現後のスタイル */
-  .drop-menu__link.is-active {
-    display: block;
-  }
-
-  .header {
-    background: #88a6a9;
-    padding-left: 0px;
-  }
-
-  .header.attraction::after {
-    width: 0px !important;
-  }
-
-  .header.guidance::after {
-    width: 0px !important;
-  }
-
-  .global-nav .inner .box>.wrap .list .parent span.en {
-    color: #fff !important;
-    /* display: block; */
-  }
-
-  .footer-nav>.wrap .list .parent span.en {
-    color: #fff !important;
-  }
-
-  .hamburger {
-    background-color: #a9a9a9;
-  }
-
-  .global-nav.-open {
-    background-color: rgba(153, 153, 153, 1);
-  }
-
-  .hamburger.-open {
-    background-color: transparent !important;
-  }
-
-  .footer {
-    background: #a9a9a9;
-    color: #fff !important;
-  }
-
-  .footer-nav a {
-    color: #fff;
-  }
-
-  .sample-post-item-wrapper img {
-    width: 150px;
-    height: 113px;
-  }
-
-  .spearly-richtext-content {
-    font-size: 16px;
-  }
-
-  @media only screen and (max-width: 480px) {
-    html {
-      max-width: 100% !important;
-    }
-
-    /* .post-content {
-      max-width: 40% !important;
-      overflow: hidden !important;
-    } */
-
-    .spearly-richtext-content {
-      font-size: 16px;
-    }
-
-    .sample-post-item-wrapper {
-      max-width: 100% !important;
-    }
+    height: 1px;
+    width: 100%;
+    position: absolute;
+    top: auto;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transition-property: transform, -webkit-transfrom;
+    transition-duration: .3s;
+    transition-timing-function: ease;
+    -webkit-transition-delay: 0;
+    transition-delay: 0;
+    background-color: #000;
+    margin: auto;
+    transform: scaleX(0);
+    transform-origin: right top;
   }
 
   @media only screen and (max-width: 736px) {
-    .for-large {
-      display: none;
+    .pager .page-numbers.next {
+      margin-left: 20px;
     }
 
-    .for-small {
-      display: block;
+    .pager .page-numbers.prev {
+      margin-right: 20px;
     }
 
-    .home-attraction>.image {
-      padding-right: 0 !important;
-    }
-
-    .home-attraction>.head {
-      margin-bottom: 25px;
-      padding: 0 20px;
-      text-align: left;
-    }
-
-    .headding-primary .en {
-      font-size: 35px;
-      letter-spacing: .026em;
-    }
-
-    .headding-primary .ja {
-      font-size: 11px;
-    }
-
-    .button-flat span {
+    .pager .page-numbers {
       font-size: 13px;
+      margin: 25px 6px 0;
     }
 
-    .text-primary {
-      font-size: 13px;
-      text-align: justify;
-      line-height: 2;
-      letter-spacing: .08em;
-    }
-
-    .home-policy .content {
+    .pager .page-numbers.next::before {
       width: 100%;
     }
 
-    .toplogo {
-      max-width: 20%;
-    }
-
-    .pconly {
-      display: none !important;
-    }
-
-    .global-nav .inner .box>.wrap .list .child {
-      display: block;
-    }
-
-    .global-nav>.wrapper {
-      max-height: 100%;
-      overflow-y: visible;
-    }
-
-    video {
-      width: 100% !important;
-    }
-  }
-
-  @media only screen and (min-width: 1080px) {
-    .hamburger {
-      display: none;
-    }
-
-    /* .toplogo {
+    .pager .page-numbers.next::after {
       width: 100%;
-      height: 100%;
-    } */
+    }
   }
 </style>
