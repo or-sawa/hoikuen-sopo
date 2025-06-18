@@ -23,15 +23,27 @@
     <link rel="stylesheet" href="sunny.css">
     <link rel="stylesheet" href="side.css">
     <meta name="google-site-verification" content="nXz-7U3ZKwKe1YLXjnM5shp1tUHmD9F0CRs_3JknxnQ" />
-    <script src="https://static.spearly.com/js/cms.js" defer></script>
-    <script>window.addEventListener('DOMContentLoaded',()=>{const t=document.querySelectorAll(':not(:defined)');for(const e of t) {e.style.visibility="hidden";}; window.spearly.config.AUTH_KEY="j4jD1F0lFI9dIpYUquX1IwAXQKxrDP_HD1xDJ5qtcEM"},{once:true})</script>
+    <script defer src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script defer src="https://static.spearly.com/js/cms.js"></script>
+    <script defer src="taniyama.js"></script>
+    <script defer src="sunny.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js"></script>
+    <script>
+      window.addEventListener('DOMContentLoaded',()=>{
+        const t=document.querySelectorAll(':not(:defined)');
+        for(const e of t) {
+          e.style.visibility="hidden";
+        }
+        window.spearly.config.AUTH_KEY="j4jD1F0lFI9dIpYUquX1IwAXQKxrDP_HD1xDJ5qtcEM"
+      },{once:true})
+    </script>
   </head>
   <body data-rsssl="1" class="guidance">
     <div class="guidance" id="container">
       <header class="header guidance" style="padding-left: 0px !important; background-color: #70c5c5;">
 
         <a href="index.html" class="toplogo">
-          <img src="images/sopo-logo.webp" alt="" style="width: 100%; height: 100%;">
+          <img src="images/sopo-logo.webp" alt="ほいくえんsopo" style="width: 100%; height: 100%;" loading="eager">
         </a>
 
         <ul class="menu pconly">
@@ -146,7 +158,16 @@
       </header>
       <section class="main-visual">
         <div class="block gym" data-structure="b-main-set-2" data-block-name="メイン(中央寄せ+ボタン)" id="section-75">
-          <video src="images/topVideo.mp4" autoplay loop muted playsinline data-wf-ignore="true" data-object-fit="cover">
+          <video 
+            src="images/topVideo.mp4" 
+            autoplay 
+            loop 
+            muted 
+            playsinline 
+            preload="none"
+            data-wf-ignore="true" 
+            data-object-fit="cover"
+            poster="images/sopo-logo.webp">
           </video>
         </div>
         <div class="maincopy">
@@ -161,7 +182,7 @@
           <div class="guidance-message" style="background-color: #70c5c5 !important;">
             <div class="wrap content-wrap">
               <div class="copy fade-in">
-                <h2 class="headding-primary white"><span class="en">new information</span><span class="ja">園からの情報</span></h2>
+                <h2 class="headding-primary white"><span class="en ni">new information</span><span class="ja nij">園からの情報</span></h2>
               </div>
               <br>
               <new-information-list data-item-page-path='info.html' data-perpage='1'>
@@ -174,16 +195,17 @@
                           class="vk_post vk_posts-postType-post card card-post vk_post-col-xs-6 vk_post-col-sm-6 vk_post-col-md-6 vk_post_post-col-lg-6 vk_post-col-xl-4 post-6813 post type-post status-publish format-standard has-post-thumbnail hentry category-yousu">
                             <div class="vk_post_imgOuter">
                               <a href="{%= new-information_#url %}">
-                                <img width="150" height="113" src="{%= new-information_image %}" class="attachment-post_thumbnail size-post_thumbnail wp-post-image" alt="" srcset="{%= new-information_image %} 1440w, {%= new-information_image %} 240w, {%= new-information_image %} 819w, {%= new-information_image %} 768w, {%= new-information_image %} 1229w" sizes="(max-width: 1440px) 100vw, 1440px">
+                                <img width="200" height="113" src="{%= new-information_image %}" class="attachment-post_thumbnail size-post_thumbnail wp-post-image" alt="" srcset="{%= new-information_image %} 1440w, {%= new-information_image %} 240w, {%= new-information_image %} 819w, {%= new-information_image %} 768w, {%= new-information_image %} 1229w" sizes="(max-width: 1440px) 100vw, 1440px">
                               </a>
                             </div>
+                            <br>
                             <div class="vk_post_body card-body">
-                              <h5 class="vk_post_title card-title">
+                              <h5 class="vk_post_title card-title" style="font-weight: bold;">
                                 <a href="{%= new-information_#url %}">
                                   {%= new-information_title %}
                                 </a>
                               </h5>
-                              <div class="vk_post_date card-date published">{%= new-information_date %}</div>
+                              <!-- <div class="vk_post_date card-date published">{%= new-information_date %}</div> -->
                             </div>
                           </div>
                         </div>
@@ -219,7 +241,7 @@
           <div class="home-attraction">
             <div class="image fade-in">
               <div class="">
-                <img src="images/entrance2.webp" alt="" class="lazyload" loading="lazy">
+                <img src="images/entrance2.webp" alt="保育園の入り口" class="lazyload" loading="lazy" width="800" height="600">
               </div>
             </div>
             <div class="head fade-in">
@@ -249,7 +271,7 @@
           <div class="home-policy">
             <div class="image fade-in">
               <div class="">
-                <img src="images/1thView.webp" alt="" class="lazyload" loading="lazy">
+                <img src="images/1thView.webp" alt="保育園の様子" class="lazyload" loading="lazy" width="800" height="600">
               </div>
             </div>
             <div class="head fade-in">
@@ -279,7 +301,7 @@
           <div class="home-attraction">
             <div class="image fade-in">
               <div class="">
-                <img src="images/2ndView.webp" alt="" class="lazyload" loading="lazy">
+                <img src="images/2ndView.webp" alt="保育園の様子" class="lazyload" loading="lazy" width="800" height="600">
               </div>
             </div>
             <div class="head fade-in">
@@ -309,7 +331,7 @@
             <div class="home-policy">
               <div class="image fade-in">
                 <div class="">
-                  <img src="images/3rdView.webp" alt="" class="lazyload" loading="lazy">
+                  <img src="images/3rdView.webp" alt="保育園の様子" class="lazyload" loading="lazy" width="800" height="600">
                 </div>
               </div>
               <div class="head fade-in">
@@ -433,9 +455,6 @@
     </div>
   </footer>
 </div>
-<script defer src="taniyama.js"></script>
-<script defer src="sunny.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js"></script>
 <script type="text/javascript">
   $(function(){
       var
@@ -510,8 +529,6 @@
     }
   }
 </script>
-<script defer src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="  crossorigin="anonymous"></script>
-<script defer src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/5-1-1/js/5-1-1.js"></script>
 </body>
 </html>
 <style>
@@ -828,6 +845,22 @@ li {
 
     .headding-primary .ja {
       font-size: 11px;
+    }
+
+    .headding-primary .en.ni {
+      font-size: 38px;
+    }
+
+    .headding-primary .ja.nij {
+      font-size: 20px;
+    }
+
+    new-information-list {
+      text-align: center;
+    }
+
+    .vk_post_title {
+      font-size: 20px;
     }
 
     .button-flat span {
