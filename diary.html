@@ -159,7 +159,7 @@
             cms-option-limit="10"
             cms-loop-id="news-loop"
             cms-option-order_by_date="desc"
-            style="visibility: visible;" class="vk_post vk_posts-postType-post card card-post vk_post-col-xs-6 vk_post-col-sm-6 vk_post-col-md-6 vk_post_post-col-lg-6 vk_post-col-xl-4 post-6813 post type-post status-publish format-standard has-post-thumbnail hentry category-yousu">
+            style="visibility: visible;" class="vk_post vk_posts-postType-post card card-post vk_post-col-xs-6 vk_post-col-sm-6 vk_post-col-md-4 vk_post_post-col-lg-4 vk_post-col-xl-4 post-6813 post type-post status-publish format-standard has-post-thumbnail hentry category-yousu">
               <div class="vk_post_imgOuter" style="background-image: url({%= hoikuen-sopo-blog_image %});">
                 <a href="{%= hoikuen-sopo-blog_#url %}">
                 </a>
@@ -274,9 +274,10 @@
   <script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js"></script>
   <script>
     $(".page-numbers").click(function() {
-      $("html, body").animate({
-        scrollTop: 0
-      });
+      // CMSのページネーション機能を待ってからページトップに移動（スクロールなし）
+      setTimeout(function() {
+        window.scrollTo(0, 0);
+      }, 100);
       return false;
     });
   </script>

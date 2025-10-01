@@ -188,8 +188,24 @@ h1, .page-header-title {
   max-width: 100%;
 }
 
+.vk_posts .vk_post-col-xs-12 {
+  width: calc(100% - 30px);
+}
+
 .vk_posts .vk_post-col-xs-6 {
   width: calc(50% - 30px);
+}
+
+.vk_posts .vk_post-col-md-4 {
+  width: calc(33.333% - 30px);
+}
+
+.vk_posts .vk_post_post-col-lg-4 {
+  width: calc(33.333% - 30px);
+}
+
+.vk_posts .vk_post-col-xl-4 {
+  width: calc(33.333% - 30px);
 }
 
 .card {
@@ -342,7 +358,46 @@ h1, .page-header-title {
 
 @media only screen and (min-width: 480px) {
   .vk_posts .vk_post-col-xs-6 {
-    width: calc(50% - 250px);
+    width: calc(33.333% - 30px);
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .vk_posts .vk_post-col-xs-6 {
+    width: calc(33.333% - 30px);
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .vk_posts .vk_post-col-xs-6 {
+    width: calc(33.333% - 30px);
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .vk_posts .vk_post-col-xs-6 {
+    width: calc(33.333% - 30px);
+  }
+}
+
+/* レスポンシブデザインの追加 */
+@media only screen and (max-width: 767px) {
+  .vk_posts .vk_post-col-xs-6 {
+    width: calc(50% - 30px);
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .vk_posts .vk_post-col-sm-6 {
+    width: calc(50% - 30px);
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .vk_posts .vk_post-col-md-4,
+  .vk_posts .vk_post_post-col-lg-4,
+  .vk_posts .vk_post-col-xl-4 {
+    width: calc(33.333% - 30px);
   }
 }
 
