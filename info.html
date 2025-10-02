@@ -267,6 +267,32 @@
     <div class="under"><small class="copyright" style="color: #e8004a;">© sawa co</small>
     </div>
   </footer>
+  
+  <!-- スマホ専用の下部ヘッダー -->
+  <div class="mobile-bottom-header">
+    <div class="mobile-nav">
+      <a href="index.html" class="mobile-nav-item">
+        <div class="mobile-nav-icon">🏠</div>
+        <span class="mobile-nav-text">トップ</span>
+      </a>
+      <a href="diary.html" class="mobile-nav-item">
+        <div class="mobile-nav-icon">📝</div>
+        <span class="mobile-nav-text">ブログ</span>
+      </a>
+      <a href="about.html" class="mobile-nav-item">
+        <div class="mobile-nav-icon">👶</div>
+        <span class="mobile-nav-text">保育理念</span>
+      </a>
+      <a href="schedule.html" class="mobile-nav-item">
+        <div class="mobile-nav-icon">⏰</div>
+        <span class="mobile-nav-text">1日の流れ</span>
+      </a>
+      <a href="contact.php" class="mobile-nav-item">
+        <div class="mobile-nav-icon">📞</div>
+        <span class="mobile-nav-text">お問い合わせ</span>
+      </a>
+    </div>
+  </div>
   </div>
   <script src="taniyama.js"></script>
   <script src="sunny.js"></script>
@@ -358,6 +384,32 @@
       const targetElement = document.querySelector('#target-element');
 
       targetElement.style.visibility = 'visible';
+    });
+  </script>
+  
+  <script>
+    // スマホ専用の下部ヘッダーの機能
+    document.addEventListener('DOMContentLoaded', function() {
+      // 現在のページに応じてアクティブな状態を設定
+      const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+      const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
+      
+      mobileNavItems.forEach(item => {
+        const href = item.getAttribute('href');
+        if (href === currentPage || (currentPage === '' && href === 'index.html')) {
+          item.classList.add('active');
+        }
+      });
+      
+      // スマホでのみ固定表示（スクロール制御を無効化）
+      const mobileHeader = document.querySelector('.mobile-bottom-header');
+      
+      // スマホでのみ固定表示を維持
+      if (window.innerWidth <= 768) {
+        mobileHeader.style.transform = 'translateY(0)';
+        mobileHeader.style.position = 'fixed';
+        mobileHeader.style.bottom = '0';
+      }
     });
   </script>
 </body>
@@ -458,6 +510,109 @@
 
     .pager .page-numbers.next::after {
       width: 100%;
+    }
+  }
+  
+  /* スマホ専用の下部ヘッダー */
+  .mobile-bottom-header {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: #70c5c5;
+    border-top: 1px solid #e0e0e0;
+    z-index: 9999;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    transform: translateY(0);
+    transition: transform 0.3s ease;
+  }
+
+  .mobile-nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 8px 0;
+    max-width: 100%;
+  }
+
+  .mobile-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+    padding: 8px 4px;
+    min-width: 60px;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+  }
+
+  .mobile-nav-item:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+  }
+
+  .mobile-nav-item:active {
+    transform: translateY(0);
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+
+  .mobile-nav-item.active {
+    background-color: rgba(255, 255, 255, 0.3);
+    color: #e8004a;
+    font-weight: 600;
+  }
+
+  .mobile-nav-item.active .mobile-nav-icon {
+    transform: scale(1.1);
+  }
+
+  .mobile-nav-icon {
+    font-size: 20px;
+    margin-bottom: 4px;
+    line-height: 1;
+  }
+
+  .mobile-nav-text {
+    font-size: 10px;
+    font-weight: 500;
+    text-align: center;
+    line-height: 1.2;
+    letter-spacing: 0.05em;
+  }
+
+  /* スマホでのみ表示 */
+  @media only screen and (max-width: 768px) {
+    .mobile-bottom-header {
+      display: block !important;
+      position: fixed !important;
+      bottom: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      width: 100% !important;
+    }
+    
+    /* スマホで下部ヘッダーがある分、bodyに余白を追加 */
+    body {
+      padding-bottom: 80px !important;
+    }
+    
+    /* フッターの上に表示されるように調整 */
+    .footer {
+      margin-bottom: 80px;
+    }
+  }
+
+  /* タブレット以上では非表示 */
+  @media only screen and (min-width: 769px) {
+    .mobile-bottom-header {
+      display: none !important;
+    }
+    
+    body {
+      padding-bottom: 0 !important;
     }
   }
 </style>
