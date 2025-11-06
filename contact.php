@@ -2,11 +2,152 @@
 // 変数の初期化
 $page_flag = 0;
 
+// スパム検出関数
+function detectSpam($data) {
+    $spamPatterns = [
+        '/credit.*account/i',
+        '/transfer.*here/i',
+        '/confirm.*transfer/i',
+        '/\$[\d,]+\.\d{2}/i',
+        '/http[s]?:\/\/[^\s]+/i',
+        '/click.*here/i',
+        '/verify.*account/i',
+        '/suspended.*account/i',
+        '/urgent.*action/i',
+        '/\* \* \*.*\?/i',  // スパムメッセージのパターン
+        '/\d{4,}xr/i',      // 不自然な文字列パターン
+        '/ksa\d+pu/i',      // スパム件名パターン
+        '/cek\d+j\d+/i'     // スパム内容パターン
+    ];
+    
+    $allText = $data['c-name'] . ' ' . $data['c-kana'] . ' ' . $data['c-mail'] . ' ' . 
+               $data['c-subject'] . ' ' . $data['c-message'];
+    
+    foreach ($spamPatterns as $pattern) {
+        if (preg_match($pattern, $allText)) {
+            return true;
+        }
+    }
+    
+    // メールアドレスドメインブラックリスト
+    $blockedDomains = [
+        'gmail.com',  // 今回のスパムで使用されたドメイン
+        'yahoo.com',
+        'hotmail.com',
+        'outlook.com',
+        'aol.com',
+        'mail.ru',
+        'yandex.ru',
+        'protonmail.com',
+        'tutanota.com',
+        'guerrillamail.com',
+        '10minutemail.com',
+        'tempmail.org'
+    ];
+    
+    $emailDomain = substr(strrchr($data['c-mail'], "@"), 1);
+    if (in_array(strtolower($emailDomain), $blockedDomains)) {
+        return true;
+    }
+    
+    // Honeypotフィールドのチェック
+    if (!empty($data['website'])) {
+        return true;
+    }
+    
+    return false;
+}
+
+// レート制限チェック
+function checkRateLimit($ip) {
+    $rateLimitFile = 'rate_limit.json';
+    $currentTime = time();
+    $rateLimit = 300; // 5分間
+    $maxAttempts = 3; // 最大試行回数
+    
+    if (file_exists($rateLimitFile)) {
+        $data = json_decode(file_get_contents($rateLimitFile), true);
+    } else {
+        $data = [];
+    }
+    
+    // 古いエントリを削除
+    foreach ($data as $key => $entry) {
+        if ($currentTime - $entry['time'] > $rateLimit) {
+            unset($data[$key]);
+        }
+    }
+    
+    // 現在のIPの試行回数をチェック
+    $attempts = 0;
+    foreach ($data as $entry) {
+        if ($entry['ip'] === $ip) {
+            $attempts++;
+        }
+    }
+    
+    if ($attempts >= $maxAttempts) {
+        return false;
+    }
+    
+    // 新しい試行を記録
+    $data[] = ['ip' => $ip, 'time' => $currentTime];
+    file_put_contents($rateLimitFile, json_encode($data));
+    
+    return true;
+}
+
+// reCAPTCHA検証
+function verifyRecaptcha($token) {
+    $secretKey = '6LfYourSecretKeyHere'; // 実際のシークレットキーに置き換え
+    $url = 'https://www.google.com/recaptcha/api/siteverify';
+    
+    $data = [
+        'secret' => $secretKey,
+        'response' => $token,
+        'remoteip' => $_SERVER['REMOTE_ADDR']
+    ];
+    
+    $options = [
+        'http' => [
+            'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+            'method' => 'POST',
+            'content' => http_build_query($data)
+        ]
+    ];
+    
+    $context = stream_context_create($options);
+    $result = file_get_contents($url, false, $context);
+    $response = json_decode($result, true);
+    
+    return $response['success'] && $response['score'] > 0.5;
+}
+
 if( !empty($_POST['btn_confirm']) ) {
+    // スパム検出
+    if (detectSpam($_POST)) {
+        die('スパムと検出された内容が含まれています。');
+    }
+    
+    // レート制限チェック
+    if (!checkRateLimit($_SERVER['REMOTE_ADDR'])) {
+        die('送信回数が上限に達しました。しばらく時間をおいてから再度お試しください。');
+    }
+    
+    // reCAPTCHA検証
+    if (!empty($_POST['recaptcha_token'])) {
+        if (!verifyRecaptcha($_POST['recaptcha_token'])) {
+            die('reCAPTCHA検証に失敗しました。');
+        }
+    }
 
 	$page_flag = 1;
 
 } elseif( !empty($_POST['btn_submit']) ) {
+    // 最終送信時も再度チェック
+    if (detectSpam($_POST)) {
+        die('スパムと検出された内容が含まれています。');
+    }
 
   $page_flag = 2;
 
@@ -38,6 +179,7 @@ if( !empty($_POST['btn_confirm']) ) {
     <link rel="stylesheet" href="sunny.css">
     <link rel="stylesheet" href="side.css">
     <meta name="google-site-verification" content="nXz-7U3ZKwKe1YLXjnM5shp1tUHmD9F0CRs_3JknxnQ" />
+    <script src="https://www.google.com/recaptcha/api.js?render=6LfYourSiteKeyHere"></script>
   </head>
 <body data-rsssl="1" class="facility">
   <div class="facility active" id="container">
@@ -401,6 +543,12 @@ if( !empty($_POST['btn_confirm']) ) {
                   </tr>
                 </tbody>
               </table>
+              <!-- Honeypot field (hidden from users) -->
+              <div style="display: none;">
+                <input type="text" name="website" value="" />
+              </div>
+              <!-- reCAPTCHA token -->
+              <input type="hidden" name="recaptcha_token" id="recaptcha_token" value="">
               <!-- <div class="check">
                 <label>
                   <br>
@@ -411,7 +559,7 @@ if( !empty($_POST['btn_confirm']) ) {
               </div> -->
               <p>
                 <!-- <input type="hidden" name="token" value="28cnhprap6as0gs44og4wwc0kokcs80s"> -->
-                <input id="send" type="submit" name="btn_confirm" class="button-flat is-disabled" value="送信内容を確認" style="color: #333;">
+                <input id="send" type="submit" name="btn_confirm" class="button-flat is-disabled" value="送信内容を確認" style="color: #333;" onclick="generateRecaptchaToken();">
               </p>
               <div class="button-wrap">
                 <br>
@@ -657,6 +805,73 @@ if( !empty($_POST['btn_confirm']) ) {
       mobileHeader.style.bottom = '0';
     }
   });
+</script>
+
+<script>
+// reCAPTCHA v3 token generation
+function generateRecaptchaToken() {
+  grecaptcha.ready(function() {
+    grecaptcha.execute('6LfYourSiteKeyHere', {action: 'contact_form'}).then(function(token) {
+      document.getElementById('recaptcha_token').value = token;
+    });
+  });
+}
+
+// Spam detection patterns
+function detectSpamPatterns() {
+  const name = document.querySelector('input[name="c-name"]').value;
+  const email = document.querySelector('input[name="c-mail"]').value;
+  const subject = document.querySelector('input[name="c-subject"]').value;
+  const message = document.querySelector('textarea[name="c-message"]').value;
+  
+  // Common spam patterns
+  const spamPatterns = [
+    /credit.*account/i,
+    /transfer.*here/i,
+    /confirm.*transfer/i,
+    /\$[\d,]+\.\d{2}/i,
+    /http[s]?:\/\/[^\s]+/i,
+    /click.*here/i,
+    /verify.*account/i,
+    /suspended.*account/i,
+    /urgent.*action/i
+  ];
+  
+  const allText = name + ' ' + email + ' ' + subject + ' ' + message;
+  
+  for (let pattern of spamPatterns) {
+    if (pattern.test(allText)) {
+      alert('スパムと検出された内容が含まれています。内容を確認してください。');
+      return false;
+    }
+  }
+  
+  return true;
+}
+
+// Form validation with spam detection
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.querySelector('form[method="post"]');
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      // Check honeypot field
+      const honeypot = document.querySelector('input[name="website"]').value;
+      if (honeypot !== '') {
+        e.preventDefault();
+        return false;
+      }
+      
+      // Check for spam patterns
+      if (!detectSpamPatterns()) {
+        e.preventDefault();
+        return false;
+      }
+      
+      // Generate reCAPTCHA token
+      generateRecaptchaToken();
+    });
+  }
+});
 </script>
 </body></html>
 <style>
