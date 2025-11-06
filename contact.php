@@ -648,7 +648,7 @@ if( !empty($_POST['btn_confirm']) ) {
           </ul>
         </div>
       </div>
-      <div class="under"><small class="copyright" style="color: #e8004a;">© sawa co</small>
+      <div class="under"><small class="copyright" style="color: #e8004a;">© Sawa co</small>
       </div>
     </footer>
     
