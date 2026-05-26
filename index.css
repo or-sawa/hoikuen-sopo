@@ -213,6 +213,54 @@ li {
     text-indent: 0.1em;
   }
 
+  /* 日記セクション（.home-policy）の下に余白を確保 */
+  .section-primary:has(+ .instagram-section) {
+    padding-bottom: clamp(48px, 8vw, 88px);
+  }
+
+  .section-primary:has(+ .instagram-section) .home-policy {
+    margin-bottom: clamp(20px, 3vw, 40px);
+    overflow: hidden;
+  }
+
+  .instagram-section {
+    clear: both;
+    position: relative;
+    z-index: 2;
+    margin-top: clamp(24px, 4vw, 48px);
+    padding: 32px 20px 48px;
+    text-align: center;
+  }
+
+  .instagram-cta {
+    display: flex;
+    justify-content: center;
+  }
+
+  .button-instagram {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: auto;
+    min-width: min(100%, 420px);
+    max-width: 100%;
+    padding: 22px 32px 23px;
+    border-color: #e8004a;
+    color: #e8004a;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+
+  .button-instagram:hover {
+    background-color: #e8004a;
+    color: #fff;
+    border-color: #e8004a;
+  }
+
+  .button-instagram .instagram-icon {
+    flex-shrink: 0;
+  }
+
   .text-primary.read {
     line-height: 2.3;
     margin-bottom: 40px;
@@ -237,6 +285,10 @@ li {
   @media only screen and (max-width: 1150px) {
     .button-flat {
       width: 350px;
+    }
+
+    .button-instagram {
+      min-width: min(100%, 350px);
     }
   }
 
@@ -331,6 +383,24 @@ li {
 
     .button-flat span {
       font-size: 13px;
+    }
+
+    .section-primary:has(+ .instagram-section) {
+      padding-bottom: 60px;
+    }
+
+    .section-primary:has(+ .instagram-section) .home-policy {
+      margin-bottom: 28px;
+    }
+
+    .instagram-section {
+      margin-top: 36px;
+      padding: 24px 16px 32px;
+    }
+
+    .button-instagram {
+      min-width: 100%;
+      padding: 18px 20px;
     }
 
     .text-primary {
