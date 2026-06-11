@@ -295,3 +295,76 @@ li {
       display: none;
     }
   }
+
+  .standards-table-wrap {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px 40px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .standards-table-scroll-hint {
+    display: none;
+    margin: 0 0 10px;
+    text-align: center;
+    font-size: 13px;
+    color: #666;
+    letter-spacing: 0.08em;
+  }
+
+  .standards-table {
+    width: 100%;
+    min-width: 720px;
+    border-collapse: collapse;
+    background: #fff;
+    font-size: 14px;
+    line-height: 1.6;
+    letter-spacing: 0.04em;
+  }
+
+  .standards-table th,
+  .standards-table td {
+    border: 1px dashed #e8a87c;
+    padding: 10px 12px;
+    vertical-align: top;
+    text-align: left;
+  }
+
+  .standards-table th {
+    background: #fde8d8;
+    font-weight: 600;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .standards-table td:first-child {
+    white-space: nowrap;
+    font-weight: 500;
+  }
+
+  .standards-table [contenteditable="true"]:focus {
+    outline: 2px solid #e8004a;
+    outline-offset: -2px;
+    background: #fffef5;
+  }
+
+  .standards-table [contenteditable="true"]:hover {
+    background: #fffef5;
+  }
+
+  @media only screen and (max-width: 736px) {
+    .standards-table-scroll-hint {
+      display: block;
+    }
+
+    .standards-table {
+      font-size: 12px;
+    }
+
+    .standards-table th,
+    .standards-table td {
+      padding: 8px;
+    }
+  }
