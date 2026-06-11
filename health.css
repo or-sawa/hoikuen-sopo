@@ -11,6 +11,18 @@ body {
   padding: 0;
 }
 
+#container.attraction,
+section.attraction,
+.attraction-first {
+  height: auto;
+  min-height: auto;
+}
+
+main.attraction .attraction-detail {
+  margin-top: 0;
+  padding: 40px 0 80px;
+}
+
 a {
   color: #333;
   text-decoration: none;
@@ -281,9 +293,5 @@ li {
   @media only screen and (min-width: 1080px) {
     .hamburger {
       display: none;
-    }
-
-    .attraction-detail {
-      margin-top: -400px;
     }
   }
