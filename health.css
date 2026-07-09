@@ -62,6 +62,49 @@ main.attraction .attraction-detail {
   border-color: #70c5c5;
 }
 
+.health-nav-external {
+  background: #70c5c5;
+  color: #fff;
+  border-color: #70c5c5;
+}
+
+.health-nav-external:hover {
+  background: #5ab5b5;
+  border-color: #5ab5b5;
+}
+
+.health-availability {
+  margin: 20px 0 8px;
+  text-align: center;
+}
+
+.health-availability-link {
+  display: inline-block;
+  padding: 14px 28px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: #fff;
+  background: #70c5c5;
+  border: 2px solid #70c5c5;
+  border-radius: 30px;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.health-availability-link:hover {
+  background: #5ab5b5;
+  border-color: #5ab5b5;
+  color: #fff;
+}
+
+.health-availability-note {
+  display: block;
+  margin-top: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+}
+
 /* ── Page sections ── */
 .health-page {
   max-width: 1100px;
